@@ -27,3 +27,5 @@ print("")
 
 # prints the chat response
 print(chat_completion.choices[0].message.content)
+
+endringer
