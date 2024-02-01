@@ -1,5 +1,5 @@
 <script>
-  import {ChatbotInterface as Chatbot, NavbarSet} from "$lib";
+  import { ChatbotInterface as Chatbot, NavbarSet, NavbarButtons } from "$lib";
 </script>
 
 <main
