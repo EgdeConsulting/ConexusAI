@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Conexus AI is an undergraduate project developed by students from the University of South-Eastern Norway. The project focuses on implementing an AI chatbot to make the retrieval of relevant data from a large database more intuitive. Additionally, it includes features such as displaying data graphically, downloading it as either a .xls or .prf file, and receiving it directly into one's email.
+Conexus AI is an undergraduate project developed by students from the University of South-Eastern Norway. The project focuses on implementing an AI chatbot to make the retrieval of relevant data from a large database more intuitive. Additionally, it includes features such as displaying data graphically, downloading it as either a .xls or .pdf file, and receiving it directly into one's email.
 
 ### University
 
