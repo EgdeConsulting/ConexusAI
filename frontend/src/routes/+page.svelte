@@ -1,36 +1,42 @@
 <script>
-  import { ChatbotInterface, NavbarButtons, ShareChatIcon } from "$lib";
+  import { ChatbotInterface, NavbarSet, SendIcon } from "$lib";
 
   function test() {
     alert("test method");
   }
   const NavbarButtonsArray = [
-    { picture: ShareChatIcon, text: "text 1", method: test },
-    { picture: ShareChatIcon, text: "text 2", method: test },
+    { icon: SendIcon, text: "text 1", method: test },
+    { icon: SendIcon, text: "text 2", method: test },
+    { icon: SendIcon, text: "text 3", method: test },
   ];
+  let showNavbar = true;
 </script>
 
-<nav
-  style="display: flex; align-items: center; justify-content: center; height: 100vh;"
->
-  <section class="container">
-    <NavbarButtons {NavbarButtonsArray} />
+<div class="main-container">
+  <section class="navbar-container">
+    <NavbarSet {NavbarButtonsArray} {showNavbar} />
   </section>
-  <aside><ChatbotInterface /></aside>
-</nav>
-<nav></nav>
+  <aside class="chat-interface">
+    <ChatbotInterface />
+  </aside>
+</div>
 
 <style>
-  .container {
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    min-height: 200px;
-    height: calc(100vh - 15em);
-    width: 20%;
+  .main-container {
+    display: flex;
+    height: 100vh; /* Fyller hele skjermens høyde */
+    margin: 0;
   }
-  aside {
-    /* Juster bredden etter behov */
-    width: 80%; /* Eksempel: Gjør chatbot-interface 80% av skjermens bredde */
-    padding: 1em; /* Legger til litt padding rundt chatbot-interface for estetikk */
+  .navbar-container {
+    width: 12em;
+    overflow: hidden;
+    color: white; /* Tekstfarge */
+    margin-right: 0.63em;
+    height: auto;
+  }
+  .chat-interface {
+    flex-grow: 10; /* Tar opp resterende plass */
+    background-color: #f0f0f0; /* Eksempel på bakgrunnsfarge */
+    height: auto;
   }
 </style>
