@@ -1,32 +1,44 @@
 <script>
-  import { ChatbotInterface, NavbarSet, SendIcon, ExpandedButton } from "$lib";
+  import {
+    ChatbotInterface,
+    NavbarSet,
+    SendIcon,
+    Graph,
+    LineChart,
+    BarChart,
+    PieChart,
+    DownloadIcon,
+    ShareChatIcon,
+    DownloadAsPDF,
+    DownloadAsExcel,
+    HelpIcon,
+  } from "$lib";
+  
+ 
+  
 
   function test() {
     alert("test method");
   }
-  // const NavbarButtonsArray = [
-  //   { icon: SendIcon, text: "text 1", method: test },
-  //   { icon: SendIcon, text: "text 2", method: test },
-  //   { icon: SendIcon, text: "text 3", method: test },
-  // ];
+
   let buttons = [
     {
       id: "LagGraf",
-      icon: SendIcon,
+      icon: Graph,
       text: "Lag graf...",
       subButtons: [
-        { text: "Linjediagram", method: test, icon: SendIcon },
-        { text: "Søylediagram", method: test, icon: SendIcon },
-        { text: "Kakediagram", method: test, icon: SendIcon },
+        { text: "Linjediagram", method: test, icon: LineChart },
+        { text: "Søylediagram", method: test, icon: BarChart },
+        { text: "Kakediagram", method: test, icon: PieChart },
       ],
     },
     {
       id: "download",
-      icon: SendIcon,
+      icon: DownloadIcon,
       text: "Download",
       subButtons: [
-        { text: "Download as PDF", method: test, icon: SendIcon },
-        { text: "Download as Excel", method: test, icon: SendIcon },
+        { text: "Download as PDF", method: test, icon: DownloadAsPDF },
+        { text: "Download as Excel", method: test, icon: DownloadAsExcel },
       ],
     },
     {
@@ -34,19 +46,19 @@
       icon: SendIcon,
       text: "Send",
       subButtons: [
-        { text: "Send as PDF", method: test, icon: SendIcon },
-        { text: "Send as Excel", method: test, icon: SendIcon },
+        { text: "Send as PDF", method: test, icon: DownloadAsPDF },
+        { text: "Send as Excel", method: test, icon: DownloadAsExcel },
       ],
     },
     {
-      id: "send",
-      icon: SendIcon,
+      id: "DelChat",
+      icon: ShareChatIcon,
       text: "Del chat...",
       method: test,
     },
     {
-      id: "send",
-      icon: SendIcon,
+      id: "Hjelp",
+      icon: HelpIcon,
       text: "hjelp...",
       method: test,
     },
