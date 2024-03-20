@@ -13,9 +13,8 @@
     DownloadAsExcel,
     HelpIcon,
   } from "$lib";
-  
- 
-  
+
+  import { onMount, onDestroy } from "svelte";
 
   function test() {
     alert("test method");
@@ -64,13 +63,24 @@
     },
   ];
   let showNavbar = true;
+ 
+  onMount(() => {
+    window.addEventListener("resize", () => {
+      showNavbar = (window.innerWidth < window.screen.width * 0.5) ? false : true;
+    });
+  });
+  
 </script>
 
 <div class="main-container">
-  <section class="navbar-container">
-    <NavbarSet {buttons} {showNavbar} />
-    <!-- <ExpandedButton {buttons} /> -->
-  </section>
+  
+  {#if showNavbar}
+  
+    <section class="navbar-container">
+      <NavbarSet {buttons} {showNavbar} />
+    </section>
+    
+  {/if}
   <aside class="chat-interface {showNavbar ? '' : 'full-width'}">
     <ChatbotInterface />
   </aside>
