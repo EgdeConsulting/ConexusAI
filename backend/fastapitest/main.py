@@ -1,5 +1,6 @@
 from typing import Optional
 from fastapi import FastAPI
+from fastapi import Body
 
 app = FastAPI()
 
@@ -7,8 +8,9 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+
 @app.post("/generate_response")
-async def generate_response(prompt: Optional[str] = None):
+async def generate_response(prompt: Optional[str] =Body(...)):
     if prompt is None:
         return {"error": "No prompt provided"}
     
@@ -20,3 +22,10 @@ async def generate_response(prompt: Optional[str] = None):
     
     # Return the response
     return {"response": response_message}
+
+
+
+@app.post("/reverse_string")
+async def reverse_string(text: str = Body(...)):
+    reversed_text = text[::-1]
+    return {"reversed_text": reversed_text}
