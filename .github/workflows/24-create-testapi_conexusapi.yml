@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'ConexusAPI'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E94FB61F48294DC189FC81EA428950D1 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E361E46E779E4544A3839D922608A6BF }}
