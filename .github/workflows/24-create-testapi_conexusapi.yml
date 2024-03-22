@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - ConexusAPI
+name: Build and deploy Python app to Azure Web App - conexusapi
 
 on:
   push:
@@ -64,6 +64,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'ConexusAPI'
+          app-name: 'conexusapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AC1238AC2A5E4840933B2060BD53AF3C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_83E231864B314C83A139006614DF9FB2 }}
