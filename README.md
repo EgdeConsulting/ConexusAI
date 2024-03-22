@@ -31,6 +31,20 @@ This project was conducted in collaboration with Egde. The project was initiated
 - [Contact](#contact)
 
 ## Installation
+Git: https://git-scm.com/ (merknad: anbefaler å huke av for add to window context under installasjonen)
+VS Code ("IDE"): https://code.visualstudio.com/download
+Utvidelser:
+ https://www.alphr.com/use-prettier-vs-code/ (Trenger bare å følge guiden fram til How to Configure Prettier in VS Code)
+https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
+https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
+https://marketplace.visualstudio.com/items?itemName=ZainChen.json
+https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next
+https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json
+https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode
+https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens
+https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
+https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight
+Docker Desktop: https://www.docker.com/products/docker-desktop/ eller Rancher (det bruker jeg): https://docs.rancherdesktop.io/getting-started/installation/¨
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum faucibus iaculis. Nullam suscipit metus sed sem elementum, nec lacinia quam euismod. Mauris in sem nunc. Integer egestas consequat fringilla. Curabitur auctor, nunc porttitor sodales condimentum, massa sapien rhoncus elit, at pretium ex nisl eu velit. Sed ut metus eu mauris viverra feugiat. Etiam vel hendrerit neque, nec tincidunt mauris. Proin egestas sed sem at accumsan. Morbi sagittis lectus tincidunt nunc placerat, vel lobortis risus pharetra. Mauris sit amet justo ex. Proin nulla massa, lacinia eget pellentesque ac, egestas ut nibh. Proin augue lectus, posuere pharetra sollicitudin nec, facilisis a risus. Maecenas ac neque et felis rutrum sollicitudin et id felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales justo nec risus dapibus convallis. 
 
