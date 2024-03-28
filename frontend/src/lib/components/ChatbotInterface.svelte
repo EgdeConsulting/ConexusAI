@@ -9,7 +9,7 @@
   let isLoading = false; // Tilstandsvariabel for å spore om forespørselen er under behandling
 
   async function sendMessage() {
-    if (userInput.trim() === "") {
+    if (userInput.trim() === ""|| isLoading) {
       return;
     }
 
@@ -44,12 +44,12 @@
       simulateTypingResponse(answer); // Vis svaret i chat
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
+      isLoading = false; // Sett isLoading til false 
       
     }
     finally {
-      //isLoading = false; // Sett isLoading til false uansett om forespørselen var vellykket eller ikke
       isBotTyping = false;
-      messages.splice(typingIndex, 1); // Fjern "boten skriver" meldingen ved feil
+      //messages.splice(typingIndex, 1); // Fjern "boten skriver" meldingen ved feil
     }
   }
 
@@ -104,20 +104,19 @@
       <input
         type="textarea"
         bind:value={userInput}
-        on:keydown={(e) => e.key === "Enter" && sendMessage()}
+        on:keydown={(e) => e.key === "Enter" && !isLoading && sendMessage()}
         placeholder="Spør AI...."
       />
     </div>
-
+  
     <div class="btn-tull">
-      <button on:click={sendMessage}>
+      <button on:click={sendMessage} disabled={isLoading}>
         {#if isLoading}
-        <img src = {LoadingsIcon} alt="Laster"/>
-        
+          <img src={LoadingsIcon} alt="Laster" /> <!-- Anta at dette er riktig variabelnavn for lasteikonet -->
         {:else}
-        <img src={SendIcon} alt="Send" />
+          <img src={SendIcon} alt="Send" />
         {/if}
-        
+      </button>
     </div>
   </div>
 </div>
