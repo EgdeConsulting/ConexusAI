@@ -12,7 +12,7 @@ export const GET = async ({ request }) => {
   
   export const POST = async ({ request }) => {
       try {
-        const { prompt } = await request.json(); // Anta at forespørselskroppen inneholder en "prompt"
+        const { prompt } = await request.json(); // forespørselskroppen inneholder en "prompt"
     
         // Gjør en POST-forespørsel til det eksterne API-et med prompten
         const apiResponse = await fetch("https://python-chat-api.onrender.com/python/prompt", {

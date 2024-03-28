@@ -1,9 +1,12 @@
 <script>
+  import { LoadingIcon } from "$lib";
   import SendIcon from "$lib/images/send.png";
+  import LoadingsIcon from "$lib/images/tube-spinner.svg"
   import { onMount } from "svelte";
   let messages = [];
   let userInput = "";
   let isBotTyping = false;
+  let isLoading = false; // Tilstandsvariabel for å spore om forespørselen er under behandling
 
   async function sendMessage() {
     if (userInput.trim() === "") {
@@ -18,6 +21,7 @@
 
     userInput = ""; // Nullstill inputfeltet
     isBotTyping = true;
+    isLoading = true;
     messages = [...messages, { sender: "bot", text: "" }]; // Viser at boten "skriver"
     const typingIndex = messages.length - 1;
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -40,6 +44,11 @@
       simulateTypingResponse(answer); // Vis svaret i chat
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
+      
+    }
+    finally {
+      //isLoading = false; // Sett isLoading til false uansett om forespørselen var vellykket eller ikke
+      isBotTyping = false;
       messages.splice(typingIndex, 1); // Fjern "boten skriver" meldingen ved feil
     }
   }
@@ -58,6 +67,7 @@
         messages.pop();
       }
       messages = [...messages, { sender: "bot", text: text }];
+      isLoading = false;
     } catch (error) {
       console.error("The answer is empty or not iterable:", error);
     }
@@ -100,7 +110,14 @@
     </div>
 
     <div class="btn-tull">
-      <button on:click={sendMessage}><img src={SendIcon} alt="Send" /></button>
+      <button on:click={sendMessage}>
+        {#if isLoading}
+        <img src = {LoadingsIcon} alt="Laster"/>
+        
+        {:else}
+        <img src={SendIcon} alt="Send" />
+        {/if}
+        
     </div>
   </div>
 </div>

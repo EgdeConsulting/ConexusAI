@@ -8,8 +8,9 @@ import DownloadIcon from './DownloadIcon.svelte'
 import ShareChatIcon from './ShareChatIcon.svelte'
 import DownloadAsPDF from './DownloadAsPDF.svelte'
 import DownloadAsExcel from './DownloadAsExcel.svelte'
-import HelpIcon from './HelpIcon.svelte'    
+import HelpIcon from './HelpIcon.svelte' 
+import LoadingIcon from './LoadingIcon.svelte'     
 
 
 export{SendIcon, Graph, LineChart, MissingIcon, BarChart, PieChart, DownloadIcon, ShareChatIcon, DownloadAsPDF, DownloadAsExcel,
-HelpIcon}
+HelpIcon, LoadingIcon}

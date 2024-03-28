@@ -31,25 +31,58 @@ This project was conducted in collaboration with Egde. The project was initiated
 - [Contact](#contact)
 
 ## Installation
-Git: https://git-scm.com/ (merknad: anbefaler å huke av for add to window context under installasjonen)
-VS Code ("IDE"): https://code.visualstudio.com/download
-Utvidelser:
- https://www.alphr.com/use-prettier-vs-code/ (Trenger bare å følge guiden fram til How to Configure Prettier in VS Code)
-https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
-https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
-https://marketplace.visualstudio.com/items?itemName=ZainChen.json
-https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next
-https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json
-https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode
-https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens
-https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
-https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight
-Docker Desktop: https://www.docker.com/products/docker-desktop/ eller Rancher (det bruker jeg): https://docs.rancherdesktop.io/getting-started/installation/¨
+Frontend:
+To set up the ConexusAI frontend on your local server, follow these steps:
+
+1. Prerequisites:
+- Ensure you have Node.js installed on your system (preferably the latest stable version).
+- Install the Vite extension by Anthony Fu for enhanced development experience with hot module replacement support.
+
+2. Clone the Repository:
+If you haven't already, clone the project repository to your local machine using:
+- git clone [repository_url]
+- Replace [repository_url] with the actual URL of the repository.
+
+3. Install Dependencies:
+ Navigate to the project directory in the terminal and install the required npm packages:
+- npm install
+
+4. Run the Development Server:
+Start the local development server by executing:
+- npm run dev
+- This will spin up a Vite server and the application will be available on a local URL, typically http://localhost:3000.
+
+5. Open the Application:
+- Access the frontend by opening the local server URL in your web browser.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum faucibus iaculis. Nullam suscipit metus sed sem elementum, nec lacinia quam euismod. Mauris in sem nunc. Integer egestas consequat fringilla. Curabitur auctor, nunc porttitor sodales condimentum, massa sapien rhoncus elit, at pretium ex nisl eu velit. Sed ut metus eu mauris viverra feugiat. Etiam vel hendrerit neque, nec tincidunt mauris. Proin egestas sed sem at accumsan. Morbi sagittis lectus tincidunt nunc placerat, vel lobortis risus pharetra. Mauris sit amet justo ex. Proin nulla massa, lacinia eget pellentesque ac, egestas ut nibh. Proin augue lectus, posuere pharetra sollicitudin nec, facilisis a risus. Maecenas ac neque et felis rutrum sollicitudin et id felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales justo nec risus dapibus convallis. 
 
 
 ## Usage
+Frontend:
+The ConexusAI frontend application is structured into various components, each serving a specific purpose within the user interface:
+1. NavbarSet.svelte:
+- Houses the navigation functionality through the ExpandedButton.svelte components.
+- To modify button functionality, edit the let buttons array found in the +page.svelte file located under src/routes.
+
+2. ExpandedButton.svelte:
+- This is a generic button component designed to be reusable across the application. Button behaviors can be customized via props.
+
+3. ChatbotInterface.svelte:
+- Contains the core logic for user interactions with the AI chatbot. This component manages both input and output of the chat interface.
+
+4. Working with Button Methods:
+- For defining actions that button components should execute, locate and edit the buttonMethods.js file within src/lib.
+
+5. Icons:
+- Icons used throughout the application are Svelte components and can be found under src/lib/icons.
+
+6. Server Interaction:
+- The +server.js file under src/routes/api/posts handles the POST requests to the backend. Any modifications to how the frontend communicates with the backend via POST requests should be made here.
+
+
+
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum faucibus iaculis. Nullam suscipit metus sed sem elementum, nec lacinia quam euismod. Mauris in sem nunc. Integer egestas consequat fringilla. Curabitur auctor, nunc porttitor sodales condimentum, massa sapien rhoncus elit, at pretium ex nisl eu velit. Sed ut metus eu mauris viverra feugiat. Etiam vel hendrerit neque, nec tincidunt mauris. Proin egestas sed sem at accumsan. Morbi sagittis lectus tincidunt nunc placerat, vel lobortis risus pharetra. Mauris sit amet justo ex. Proin nulla massa, lacinia eget pellentesque ac, egestas ut nibh. Proin augue lectus, posuere pharetra sollicitudin nec, facilisis a risus. Maecenas ac neque et felis rutrum sollicitudin et id felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales justo nec risus dapibus convallis. 
 
