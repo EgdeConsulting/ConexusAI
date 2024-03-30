@@ -1,5 +1,7 @@
 <script>
-  import { ExpandedButton } from "$lib";
+  import { ExpandedButton, Switch } from "$lib";
+
+  let acceptTerms = false;
   
   export let buttons = [];
   export let showNavbar = false;
@@ -7,7 +9,16 @@
 
 {#if showNavbar}
   <div class="navbar-set">
-    <!-- <NavbarButtons {NavbarButtonsArray} /> -->
+    <p class="LogoConexusAI">ConexusAI</p>
+    <div class="switch-container">
+      <div>
+        <Switch bind:checked={acceptTerms} />
+      </div>
+      <div>
+        <p class="dark-modus">Mørk modus</p>
+      </div>
+      
+    </div>
     <ExpandedButton {buttons} />
   </div>
 {/if}
@@ -19,5 +30,40 @@
     background-color: #00244e;
     height: 100%;
     width: 100%;
+   
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
   }
+  .LogoConexusAI {
+    margin: 0px;
+    width: auto;
+    height: 1.7rem;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 27px;
+    text-align: center;
+    color: #ffa800;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .switch-container {
+    display: flex;
+    align-items: center; /* Sentrerer elementene vertikalt */
+    gap: 0.5rem; /* Gir litt plass mellom switch og tekst */
+    justify-content: center;
+    margin: 0.5rem;
+    
+  }
+  .dark-modus {
+    height: 0.87rem;
+    width: 4.3rem;
+    font-family: "Open Sans";
+    font-size: 0.75rem;
+    white-space: nowrap; 
+    color: #d6de67;
+    margin: 0px;
+    
+  } 
 </style>

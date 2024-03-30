@@ -10,7 +10,7 @@ import DownloadAsPDF from './DownloadAsPDF.svelte'
 import DownloadAsExcel from './DownloadAsExcel.svelte'
 import HelpIcon from './HelpIcon.svelte' 
 import LoadingIcon from './LoadingIcon.svelte'     
-
+import BotIcon from './BotIcon.svelte'
 
 export{SendIcon, Graph, LineChart, MissingIcon, BarChart, PieChart, DownloadIcon, ShareChatIcon, DownloadAsPDF, DownloadAsExcel,
-HelpIcon, LoadingIcon}
+HelpIcon, LoadingIcon, BotIcon}
