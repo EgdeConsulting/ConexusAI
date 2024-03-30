@@ -13,7 +13,7 @@
     DownloadAsExcel,
     HelpIcon,
   } from "$lib";
-  import * as ButtonMethods from "$lib/buttonMethods.js";
+  import * as ButtonMethods from "$lib/components/navbar/buttonMethods";
   import { onMount, onDestroy } from "svelte";
 
   function test() {
