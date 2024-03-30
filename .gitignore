@@ -139,7 +139,7 @@ __pycache__/
 
 # C extensions
 *.so
-!src/lib
+
 # Distribution / packaging
 .Python
 build/
@@ -294,7 +294,7 @@ key.py
 
 # Macshit to ignore
 .DS_Store
-
+!src/lib
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
