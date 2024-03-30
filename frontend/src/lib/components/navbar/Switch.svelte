@@ -1,7 +1,12 @@
 <script>
-    export let checked = false;
-    let color = "ADBDCE";
+  export let checked = false;
+  let color = "ADBDCE";
 </script>
+
+<label class="switch">
+  <input type="checkbox" bind:checked />
+  <span class="slider"></span>
+</label>
 
 <style>
   .switch {
@@ -37,7 +42,7 @@
     width: 10px; /* Redusert fra 26px til 18px */
     left: 4px; /* Justert for mindre størrelse */
     bottom: 2px; /* Justert for mindre størrelse */
-    background-color: #00244E; 
+    background-color: #00244e;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
@@ -53,8 +58,3 @@
     transform: translateX(15px); /* Justert for mindre størrelse */
   }
 </style>
-
-<label class="switch">
-  <input type="checkbox" bind:checked />
-  <span class="slider"></span>
-</label>
