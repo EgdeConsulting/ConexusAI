@@ -11,14 +11,24 @@
         >{message.sender === "user" ? "Du:" : ""}
         {#if message.sender !== "user"}
           <BotIcon class="bot-icon" />
+          ConexusAI:
         {/if}
-        ConexusAI:
       </span>
+      <!-- må endre ifra message.text til message.type === "text" for å få det til å funke -->
       {#if message.text}
         <span class="text">{message.text}</span>
-      {/if}
-      {#if message.image}
-        <img src={message.image} alt="Bilde fra AI" class="image-response" />
+      {:else if message.type === "list"}
+        <ul>
+          {#each message.content as item}
+            <li>{item}</li>
+          {/each}
+        </ul>
+      {:else if message.type === "image"}
+        <img src={message.content} alt="Bilde fra AI" class="image-response" />
+      {:else if message.type === "pdf"}
+        <!-- Implementer visning av PDF -->
+      {:else if message.type === "excel"}
+      <!-- Implementer visning eller nedlasting av Excel-fil -->
       {/if}
     </div>
   {/each}
