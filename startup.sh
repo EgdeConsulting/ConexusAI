@@ -4,7 +4,7 @@
 cd $HOME/site/wwwroot
 
 # Activate the Python virtual environment (if applicable)
-source /path/to/venv/bin/activate
+source /backend/fastapi/.venv/bin/activate
 
 # Run the Python program
 python /backend/fastapitest/main.py
