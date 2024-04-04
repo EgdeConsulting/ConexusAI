@@ -6,7 +6,7 @@ from fastapi import Body
 app = FastAPI(title="FastAPI Test", description="Testing FastAPI", version="0.1.0")
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "World "}
 
 
 @app.post("/generate_response")
