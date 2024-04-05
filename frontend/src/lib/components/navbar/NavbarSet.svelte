@@ -37,6 +37,7 @@
   }
   .LogoConexusAI {
     margin: 0px;
+    padding: 1rem 0 0.5rem;
     width: auto;
     height: 1.7rem;
     font-family: "Open Sans";
@@ -62,7 +63,7 @@
     font-family: "Open Sans";
     font-size: 0.75rem;
     white-space: nowrap; 
-    color: #d6de67;
+    color: #ffa800;
     margin: 0px;
     
   } 
