@@ -304,3 +304,6 @@ key.py
 
 !src/lib
 !frontend/dist
+
+# Svelte build output
+/frontend/app/
