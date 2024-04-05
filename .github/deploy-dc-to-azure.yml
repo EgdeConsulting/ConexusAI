@@ -1,4 +1,4 @@
-name: Build and deploy a container to an Azure Web App
+name: Build and deploy a container to an Azure Web App.
 
 env:
   AZURE_WEBAPP_NAME: conexus-ai # set this to the name of your Azure Web App
@@ -38,7 +38,7 @@ jobs:
         with:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-          file: ./Dockerfile
+          file: frontend/Dockerfile
 
   deploy:
     permissions:
