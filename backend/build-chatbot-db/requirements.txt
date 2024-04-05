@@ -1,0 +1,6 @@
+SQLAlchemy
+os
+pyodbc
+langchain
+OpenAI
+mysql-connector-python
