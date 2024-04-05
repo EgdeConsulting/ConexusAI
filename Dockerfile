@@ -4,7 +4,7 @@ FROM node:18-alpine AS builder
 WORKDIR /frontend
 COPY /frontend/package*.json .
 RUN npm install
-COPY . .
+COPY /frontend .
 RUN npm run build
 RUN npm prune --production
 
