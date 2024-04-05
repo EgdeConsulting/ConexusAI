@@ -33,8 +33,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: conexusaiui.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_aee866f172af4961b1fcb77f79d2bd73 }}/frontend-docker-image:${{ github.sha }}
+          context: ./frontend
           file: ./frontend/Dockerfile
+          tags: conexusaiui.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_aee866f172af4961b1fcb77f79d2bd73 }}/frontend-docker-image:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
