@@ -13,9 +13,8 @@
     DownloadAsExcel,
     HelpIcon,
   } from "$lib";
-  
- 
-  
+  import * as ButtonMethods from "$lib/components/navbar/buttonMethods";
+  import { onMount, onDestroy } from "svelte";
 
   function test() {
     alert("test method");
@@ -27,9 +26,21 @@
       icon: Graph,
       text: "Lag graf...",
       subButtons: [
-        { text: "Linjediagram", method: test, icon: LineChart },
-        { text: "Søylediagram", method: test, icon: BarChart },
-        { text: "Kakediagram", method: test, icon: PieChart },
+        {
+          text: "Linjediagram",
+          method: ButtonMethods.lineChartGraph,
+          icon: LineChart,
+        },
+        {
+          text: "Søylediagram",
+          method: ButtonMethods.barChartGraph,
+          icon: BarChart,
+        },
+        {
+          text: "Kakediagram",
+          method: ButtonMethods.pieChartGraph,
+          icon: PieChart,
+        },
       ],
     },
     {
@@ -37,8 +48,16 @@
       icon: DownloadIcon,
       text: "Download",
       subButtons: [
-        { text: "Download as PDF", method: test, icon: DownloadAsPDF },
-        { text: "Download as Excel", method: test, icon: DownloadAsExcel },
+        {
+          text: "Download as PDF",
+          method: ButtonMethods.downloadPDF,
+          icon: DownloadAsPDF,
+        },
+        {
+          text: "Download as Excel",
+          method: ButtonMethods.downloadExcel,
+          icon: DownloadAsExcel,
+        },
       ],
     },
     {
@@ -46,31 +65,38 @@
       icon: SendIcon,
       text: "Send",
       subButtons: [
-        { text: "Send as PDF", method: test, icon: DownloadAsPDF },
-        { text: "Send as Excel", method: test, icon: DownloadAsExcel },
+        { text: "Send as PDF", method: ButtonMethods.sendPDF, icon: DownloadAsPDF },
+        { text: "Send as Excel", method: ButtonMethods.sendExcel, icon: DownloadAsExcel },
       ],
     },
     {
       id: "DelChat",
       icon: ShareChatIcon,
       text: "Del chat...",
-      method: test,
+      method: ButtonMethods.shareChat,
     },
     {
       id: "Hjelp",
       icon: HelpIcon,
       text: "hjelp...",
-      method: test,
+      method: ButtonMethods.helpButtonMethod,
     },
   ];
   let showNavbar = true;
+
+  onMount(() => {
+    window.addEventListener("resize", () => {
+      showNavbar = window.innerWidth < window.screen.width * 0.5 ? false : true;
+    });
+  });
 </script>
 
 <div class="main-container">
-  <section class="navbar-container">
-    <NavbarSet {buttons} {showNavbar} />
-    <!-- <ExpandedButton {buttons} /> -->
-  </section>
+  {#if showNavbar}
+    <section class="navbar-container">
+      <NavbarSet {buttons} {showNavbar} />
+    </section>
+  {/if}
   <aside class="chat-interface {showNavbar ? '' : 'full-width'}">
     <ChatbotInterface />
   </aside>
