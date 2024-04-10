@@ -1,10 +1,9 @@
-from api import app
-from api import backendai
-from fastapi import FastAPI
+import fastapi
 
-app = FastAPI()
+from easytest import EasyTest
+
+app = fastapi.FastAPI()
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
-
