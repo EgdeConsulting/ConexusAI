@@ -1,8 +1,7 @@
 import fastapi
 
 from easytest import addition
-#from api.backendai import *
-#from api.shouldbeenv import connection_string
+from api.backendai import api_query
 #from backendai import api_query
 app = fastapi.FastAPI()
 
@@ -13,8 +12,7 @@ def read_root():
 def read_addition(a: int, b: int):
     return {"result": addition(a, b)}
 
-"""
+
 @app.get("/query", body = {"question": str})
 def read_query(question: str):
     return {"result": api_query(question)}
-"""
