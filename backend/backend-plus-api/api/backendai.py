@@ -2,7 +2,7 @@ import pyodbc
 import openai
 from openai import OpenAI
 import os
-from app import connection_string
+from api.shouldbeenv import connection_string
 from langchain_community.agent_toolkits import create_sql_agent
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain.agents.agent_types import AgentType
@@ -12,6 +12,14 @@ from langchain.sql_database import SQLDatabase
 from langchain.prompts.chat import ChatPromptTemplate
 from sqlalchemy import create_engine, inspect
 from dotenv import load_dotenv
+
+driver = os.getenv("DRIVER")
+server = os.getenv("SERVER")
+database = os.getenv("DATABASE")
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")
+
+connection_string = f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password}'
 
 # Load the environment variables
 load_dotenv()
