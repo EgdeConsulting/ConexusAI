@@ -66,3 +66,6 @@ agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT
 user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder i år 2020?" # answer = 81%
 
 agent_executor.invoke(prompt.format_prompt(question = user_query))
+
+def api_query(user_query):
+    return agent_executor.invoke(prompt.format_prompt(question = user_query))
