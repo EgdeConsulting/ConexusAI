@@ -8,10 +8,10 @@ app = fastapi.FastAPI()
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+    
 @app.get("/addition")
 def read_addition(a: int, b: int):
     return {"result": addition(a, b)}
-
 
 @app.get("/query", body = {"question": str})
 def read_query(question: str):
