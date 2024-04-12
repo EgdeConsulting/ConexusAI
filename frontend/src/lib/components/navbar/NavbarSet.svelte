@@ -59,8 +59,8 @@
     width: 4.3rem;
     font-family: "Open Sans";
     font-size: 0.75rem;
-    /* white-space: nowrap;
-    color: #d6de67; */
+    white-space: nowrap;
+    color: #d6de67;
     margin: 0px;
   }
 </style>
