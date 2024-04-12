@@ -2,9 +2,11 @@
   import BotIcon from "../icons/BotIcon.svelte";
   export let messages = [];
   export let isBotTyping;
+  import isDarkMode  from "../navbar/NavbarSet.svelte";
+  
 </script>
 
-<div class="messages">
+<div class="messages" >
   {#each messages as message}
     <div class={`message ${message.sender}`}>
       <span class="sender"
@@ -28,7 +30,7 @@
       {:else if message.type === "pdf"}
         <!-- Implementer visning av PDF -->
       {:else if message.type === "excel"}
-      <!-- Implementer visning eller nedlasting av Excel-fil -->
+        <!-- Implementer visning eller nedlasting av Excel-fil -->
       {/if}
     </div>
   {/each}
@@ -54,6 +56,10 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 5px;
     border: 1px solid #ccc;
+  }
+  .dark-mode {
+    background-color: #000; /* Svart bakgrunn for mørkt tema */
+    color: #140c0c; /* Hvit tekst for mørkt tema */
   }
   .message {
     margin: 5px 0;

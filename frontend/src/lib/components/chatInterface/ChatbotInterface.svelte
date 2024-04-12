@@ -7,7 +7,8 @@
   let userInput = "";
   let isBotTyping = false;
   let isLoading = false; // Tilstandsvariabel for å spore om forespørselen er under behandling
-
+  import { writable } from 'svelte/store';
+  export const isDarkMode = writable(false);
   async function sendMessage(newMessage) {
     
     // messages = [...messages, { sender: "user", text: newMessage }];
@@ -28,6 +29,7 @@
     try {
       // Kall lokale SvelteKit API-endepunkt istedenfor det eksterne
       console.log("Sending message to backend:", newUserMessage.text);
+      console.log(JSON.stringify({ prompt: newUserMessage.text }));
       const response = await fetch("/api/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
