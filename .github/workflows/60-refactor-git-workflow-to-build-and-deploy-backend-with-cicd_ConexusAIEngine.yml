@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/conexusai/backend:${{ github.sha }}
+          tags: ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/backend:${{ github.sha }}
           file: ./Dockerfile
 
   deploy:
@@ -56,4 +56,4 @@ jobs:
           app-name: "ConexusAIEngine"
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_4fb186065f6244de842ec2d2bcd525cd }}
-          images: "ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/conexusai/backend:${{ github.sha }}"
+          images: "ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/backend:${{ github.sha }}"
