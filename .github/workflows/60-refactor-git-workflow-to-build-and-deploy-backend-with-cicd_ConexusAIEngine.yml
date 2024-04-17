@@ -55,5 +55,5 @@ jobs:
         with:
           app-name: "ConexusAIEngine"
           slot-name: "production"
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_4fb186065f6244de842ec2d2bcd525cd }}
+          publish-profile: ${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_PROFILE }}
           images: "ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/backend:${{ github.sha }}"
