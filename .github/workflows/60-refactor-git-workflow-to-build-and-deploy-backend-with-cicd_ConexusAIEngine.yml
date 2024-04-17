@@ -28,7 +28,7 @@ jobs:
         with:
           registry: https://ghcr.io/
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.ACCESS_TOKEN}}
+          password: ${{ secrets.GITHUB_TOKEN}}
 
       - name: Set Lowercase Repository Owner
         id: set_lower
