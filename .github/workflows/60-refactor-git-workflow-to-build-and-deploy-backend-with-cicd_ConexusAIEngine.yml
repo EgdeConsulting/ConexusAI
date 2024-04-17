@@ -30,8 +30,8 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_111045816035456b89cdad93f5f504b0 }}/egdeconsulting/backend:${{ github.sha }}
-        file: ./Dockerfile
+        tags: ghcr.io/egdeconsulting/backend:${{ github.sha }}
+        file: ./backend/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
         app-name: 'ConexusAIEngine'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_84d3b00d6bb9431a9e1d8531ec6b751f }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_111045816035456b89cdad93f5f504b0 }}/egdeconsulting/backend:${{ github.sha }}'
+        images: 'hcr.io/egdeconsulting/backend:${{ github.sha }}'
