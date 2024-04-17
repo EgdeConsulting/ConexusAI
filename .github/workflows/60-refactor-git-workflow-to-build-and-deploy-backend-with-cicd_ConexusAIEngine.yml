@@ -1,7 +1,7 @@
-name: Build and deploy container app to Azure Web App - ConexusAIEngine
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 
-env:
-  AZURE_WEBAPP_NAME: ConexusAIEngine # set this to the name of your Azure Web App
+name: Build and deploy container app to Azure Web App - ConexusAIEngine
 
 on:
   push:
@@ -9,48 +9,47 @@ on:
       - 60-refactor-git-workflow-to-build-and-deploy-backend-with-cicd
   workflow_dispatch:
 
-
 permissions:
   contents: read
   packages: write
-  
+
 jobs:
   build:
-    runs-on: 'ubuntu-latest'
+    runs-on: "ubuntu-latest"
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    - name: Log in to registry
-      uses: docker/login-action@v2
-      with:
-        registry: https://ghcr.io/
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_USERNAME }}
+          password: ${{ secrets.BACKENDA_ZURE_WEBAPP_PUBLISH_PASSWORD }}
 
-    - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_c48560d3074b475683000923c7249bb8 }}/Backend:${{ github.sha}}
-        file: ./backend/Dockerfile
+      - name: Build and push container image to registry
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/Backend:${{ github.sha }}
+          file: ./backend/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'production'
+      name: "production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: Deploy to Azure Web App
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'ConexusAIEngine'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4fb186065f6244de842ec2d2bcd525cd }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_c48560d3074b475683000923c7249bb8 }}/Backend:${{ github.sha }}'
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "ConexusAIEngine"
+          slot-name: "production"
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_4fb186065f6244de842ec2d2bcd525cd }}
+          images: "ghcr.io/${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_USERNAME }}/Backend:${{ github.sha }}"
