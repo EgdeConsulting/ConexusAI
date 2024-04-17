@@ -27,8 +27,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: https://ghcr.io/
-          username: ${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_USERNAME }}
-          password: ${{ secrets.BACKENDA_ZURE_WEBAPP_PUBLISH_PASSWORD }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.ACCESS_TOKEN}}
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
@@ -52,4 +52,4 @@ jobs:
           app-name: "ConexusAIEngine"
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_4fb186065f6244de842ec2d2bcd525cd }}
-          images: "ghcr.io/${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_USERNAME }}/Backend:${{ github.sha }}"
+          images: "ghcr.io/${{ github.repository_owner }}/Backend:${{ github.sha }}"
