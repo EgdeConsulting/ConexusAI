@@ -1,7 +1,5 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy container app to Azure Web App - ConexusAIEngine
+
 env:
   AZURE_WEBAPP_NAME: ConexusAIEngine # set this to the name of your Azure Web App
 
@@ -11,6 +9,11 @@ on:
       - 60-refactor-git-workflow-to-build-and-deploy-backend-with-cicd
   workflow_dispatch:
 
+
+permissions:
+  contents: read
+  packages: write
+  
 jobs:
   build:
     runs-on: 'ubuntu-latest'
@@ -32,7 +35,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_c48560d3074b475683000923c7249bb8 }}/Backend:${{ github.sha}}
         file: ./backend/Dockerfile
 
   deploy:
