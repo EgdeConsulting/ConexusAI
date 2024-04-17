@@ -30,15 +30,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.ACCESS_TOKEN}}
 
-      - name: Set Lowercase Repository Owner
-        id: set_lower
-        run: echo "REPOSITORY_OWNER_LOWER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-
+      
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/Backend:${{ github.sha }}
+          tags: ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/backend:${{ github.sha }}
           file: ./backend/Dockerfile
 
   deploy:
@@ -56,4 +53,4 @@ jobs:
           app-name: "ConexusAIEngine"
           slot-name: "production"
           publish-profile: ${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: "ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/Backend:${{ github.sha }}"
+          images: "ghcr.io/${{ env.REPOSITORY_OWNER_LOWER }}/backend:${{ github.sha }}"
