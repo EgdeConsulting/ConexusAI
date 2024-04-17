@@ -1,0 +1,124 @@
+import pyodbc
+import openai
+from openai import OpenAI
+import os
+from app import connection_string
+from langchain_community.agent_toolkits import create_sql_agent
+from langchain_community.agent_toolkits import SQLDatabaseToolkit
+from langchain.agents.agent_types import AgentType
+from langchain.agents import AgentExecutor
+from langchain_openai import ChatOpenAI
+from langchain.sql_database import SQLDatabase
+from langchain.prompts.chat import ChatPromptTemplate
+from sqlalchemy import create_engine, inspect
+from dotenv import load_dotenv
+from langchain.cache import BaseCache
+ 
+# Load the environment variables
+load_dotenv()
+ 
+# Establish a connection to the Azure SQL Database
+conn_string = 'mssql+pyodbc:///?odbc_connect=' + connection_string
+db_engine = create_engine(conn_string)
+db = SQLDatabase(db_engine)
+api_key = os.getenv("OPENAI_API_KEY")
+ 
+# Retrieve and store the list of table names
+inspector = inspect(db_engine)
+table_names = inspector.get_table_names()
+print(table_names)  # This line is just to confirm that you've retrieved the table names
+ 
+# Establish a connection to the Azure SQL Database
+llm = ChatOpenAI(model="gpt-4-1106-preview", temperature=0.0, api_key = "")
+ 
+ 
+sql_toolkit = SQLDatabaseToolkit(db=db, llm=llm)
+sql_toolkit.get_tools()
+ 
+class TableListCache(BaseCache):
+    def __init__(self):
+        self.cache = {}
+ 
+    def lookup(self, prompt: str, llm_string: str) -> Optional[Any]:
+        # Ignore llm_string, only use prompt as key
+        return self.cache.get(prompt)
+ 
+    def update(self, prompt: str, llm_string: str, return_val: Any) -> None:
+        # Ignore llm_string, only use prompt as key
+        self.cache[prompt] = return_val
+ 
+    def clear(self) -> None:
+        self.cache.clear()
+ 
+# Initialize the cache
+table_list_cache = TableListCache()
+ 
+# Retrieve and store the list of table names if not already cached
+if not table_list_cache.lookup('sql_db_list_tables', None):
+    inspector = inspect(db_engine)
+    table_names = inspector.get_table_names()
+    table_list_cache.update('sql_db_list_tables', None, table_names)
+ 
+# Use the cached table names in your agent's context
+# ...
+ 
+# When invoking the agent, check the cache first
+if table_list_cache.lookup('sql_db_list_tables', None):
+    # Use the cached list of tables
+    table_names = table_list_cache.lookup('sql_db_list_tables', None)
+else:
+    # Perform the action to retrieve the list of tables and update the cache
+    # ...
+ 
+ 
+prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system",
+        """
+        You are a backend AI-driven assistant that is going to help a user find information
+        about the general public of Norway. The user can ask questions about anything
+        related to the database. The database contains statistical information about the
+        general public, and the information is stored in an SQL database. Your job is to
+        understand the user's question and provide the most relevant answer based on the
+        information in the database. You need to understand the user question
+        and create an SQL query that retrieves the relevant information from the database.
+        Use the below context to write the Microsoft SQL queries, do NOT use MySQL queries.
+    Context:
+    you must query against the connected database, it has many tables and some views. Here are the two most important tables:
+    dim_region table has columns kommeunnummer, kommunenavn, fylkesnummer, fylkesnavn, omraadeid, omraadenavn, type, fraDato, tilDato, dim_region_key, bydelsnummer, bydelsnavn, kostragruppe, strukurendring_sammenslaaing, struktuendring_loesrivelse columns. It gives the region information.
+    dim_indikator table has columns navn, maaleenhet, human_readable_table_name, eier, eierbeskrivelse, eierSistEndret, fraDato, tilDato, fagomraade, dim_indikator_key, eierbeskrivelseURL, aktiv columns. It gives information desribed in "navn" in the unit described in "maaleenhet".       
+    Here is the most important view:
+    fact_tables is a view. The view fact_tables has columns år, dim_region_key, dim_indikator_key, verdi, alder, eierform, barnehagestr, barnevernstiltak, kjønn, prøve, årstrinn, fullføringsgrad, husdyrslag, funksjon, søknadstype, vedtakstype, landbakgrunn, innvandringskategori, art, samletStatus, gjennomførtÅr, regnskapsbegrep, typeSykelighet, tjenestetype, utdanning, tjenestegrupper, arbeidsstyrkestatus, tettbygd_eller_spredtbygd, familietype, utdanningsnivå, næringSN2007, sektor, fagutdanning, prioritertArbeidsstyrkestatus, alternativ, treningsOgMosjonsaktivitet, levevane, typeSosialKontakt, friluftslivsaktivitet, typeBomiljø, familiefase, landsdel, bygningstype, bygningsår, funksjonsproblem, typeOrganisasjon, ressurs, aktivitet, avtaleform, nøkkeltall, ForeldrenesUtdanningsnivaa, kvartal, behandlingsinstansOgBehandlingsresultat, reguleringsplanerSomDetKlagesPaa, årsakTilKlage, dyr, årsak, sortiment, verneformål, elv, bruk, barnehagetype, bosetting, innsigelsesmyndighet, begrunnelserBruktForInnsigelser, kategori, tjeneste, spørsmål, arealbrukskategori, sosioøkonomiskeRessurser, helseundersøkelser_helsekonsultasjoner. It is linked to the two previous tables, dim_region and dim_indikator, and gives the actual data.
+    As an expert you must use joins, inne join, select, where, outer join, order by, group by and other SQL statements whenever required.
+    You should always use the tables and views provided in the context.
+    You should NEVER answer questions not related to the database, and you should NEVER provide information that is not in the database.
+    You must always provide the most relevant answer based on the information in the database. If you cannot find the answer, you should say that you cannot find the answer.
+    Never give out personal information about the user or the database.
+    Do not answer questions about the database layout, or the database connection, or tables within the database.
+    When dealing with NULL values, always use IS NULL or IS NOT NULL to accurately filter data.
+    DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
+    If the question does not seem related to the database, just return "I don't know" as the answer.
+        """
+        ),
+        ("user", "{question}\ ai: ")
+    ]
+)
+ 
+"""
+ 
+"""
+agent_executor = create_sql_agent(llm=llm, db=db, verbose = True, max_execution_time = 200, max_iterations = 1000)
+#agent_executor.invoke(
+    #"Hvor mange barnehager er det i Norge?"
+#)
+ 
+# Queries to test with agent
+user_query = "Hvor mange menn røyker i Norge?"  # answer = "343 entries in the database", "There are 1,075 men who smoke, either occasionally or daily, according to the database."
+#user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder?" #svar = 82.5% (dette var 2023)...
+#user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder i år 2023?" #år 2023 er bait, er ikke med i datasettet
+#user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder i år 2020?" # answer = 81%
+#user_query = "Hvor mange barn går i barnehage i Agder i år 2020?"  # answer = 235,113, # answer = 62,376, #
+#user_query = "Hvordan ser databasen ut?"  # answer = cannot provide information about the database layout
+#user_query = "Hvor mange barnehager er det i Norge?" # answer = 6,000
+ 
+agent_executor.invoke(prompt.format_prompt(question = user_query))
