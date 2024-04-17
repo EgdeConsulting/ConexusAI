@@ -48,4 +48,4 @@ jobs:
         app-name: 'ConexusAIEngine'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_84d3b00d6bb9431a9e1d8531ec6b751f }}
-        images: 'hcr.io/egdeconsulting/backend:${{ github.sha }}'
+        images: 'ghcr.io/egdeconsulting/backend:${{ github.sha }}'
