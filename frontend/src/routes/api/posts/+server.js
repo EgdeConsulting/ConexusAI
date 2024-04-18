@@ -15,7 +15,7 @@ export const GET = async ({ request }) => {
         const { prompt } = await request.json(); // forespørselskroppen inneholder en "prompt"
     
         // Gjør en POST-forespørsel til det eksterne API-et med prompten
-        const apiResponse = await fetch("https://python-chat-api.onrender.com/python/prompt", {
+        const apiResponse = await fetch("https://conexusaiengine.azurewebsites.net/message/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ prompt }),

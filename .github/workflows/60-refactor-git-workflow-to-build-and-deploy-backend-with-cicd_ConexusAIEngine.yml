@@ -5,9 +5,15 @@ name: Build and deploy container app to Azure Web App - ConexusAIEngine
 
 on:
   push:
-    branches:
-      - 60-refactor-git-workflow-to-build-and-deploy-backend-with-cicd
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
+    
+permissions:
+  contents: read
+  packages: write
+
 
 jobs:
   build:
