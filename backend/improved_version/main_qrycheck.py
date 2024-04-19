@@ -7,7 +7,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
 from langchain_community.tools.sql_database.tool import QuerySQLCheckerTool
-import pyodbc
 
 # Load the environment variables
 load_dotenv()
