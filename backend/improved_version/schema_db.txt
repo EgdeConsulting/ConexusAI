@@ -1,0 +1,1032 @@
+
+CREATE TABLE [NESTORMetaData] (
+	[ID] INTEGER NOT NULL IDENTITY(1,1), 
+	[Versjon] INTEGER NULL, 
+	[SistHentet] DATETIME NULL, 
+	[System] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[SystemBaseURL] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[DataSource] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from NESTORMetaData table:
+ID	Versjon	SistHentet	System	SystemBaseURL	DataSource
+1	3	2024-02-13 01:01:34	NESTOR-Sf NESTORTILDA01	https://nestor.statsforvalteren.no/SaksDetaljerSkjema.aspx?sakGlobalUnikId=	GetNestordata
+2	3	2024-02-13 01:00:33	NESTOR-Sf NESTORTILDA01	None	GetPlanlagtTilsynOversiktSoFarThisYear
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Barnehage] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Barnehage table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+8722	13502	6309	1960
+8723	13502	6312	1960
+8742	13502	1822	2035
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Barnevern] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Barnevern table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	12276	226100	2466
+2	12276	226104	2466
+3	12276	228478	2466
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Befolkning] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Befolkning table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	13600	1679065	2123
+2	13600	1778009	2123
+3	13600	1891860	2123
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_BoligsosialtArbeid] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_BoligsosialtArbeid table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	08764	60755	2957
+2	08764	15333	2465
+3	08764	17965	1920
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Folkehelse] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Folkehelse table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	05782	182	2498
+2	05782	468	2498
+3	05782	713	2498
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Grunnskole] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Grunnskole table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+429	12255	1049	1921
+437	12235	13986	2411
+604	Elevundersøkelsen, mobbing	14078	1952
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_IntegreringOgBosetting] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_IntegreringOgBosetting table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	09817	7065587	2467
+2	09817	7192685	2467
+3	09817	8083085	2467
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_KlimaOgMiljoe] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_KlimaOgMiljoe table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	13144	42719	2441
+2	11789	549	2445
+3	13144	92689	2445
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_KommunalOkonomi] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_KommunalOkonomi table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	12362	456875	2066
+2	12362	41524	2066
+3	12362	41565	2066
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_KommunalPlanlegging] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_KommunalPlanlegging table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	13438	381523	2337
+2	05467	5970	2335
+3	12977	65458	2335
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Kommunehelsetjenesten] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Kommunehelsetjenesten table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	12005	43735	2466
+2	12005	61309	2466
+3	12229	94777	2466
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Landbruk] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Landbruk table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	06459	195472	2466
+2	Produksjons- og avløsertilskudd	33287	2466
+3	Produksjons- og avløsertilskudd	99355	2466
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Omsorgstjenesten] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Omsorgstjenesten table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	11924	215051	2466
+2	11924	215109	2466
+3	11924	219850	2466
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Reindrift] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Reindrift table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	13008	4291011	2233
+2	13008	4522915	2233
+3	13008	4561390	2233
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_SamfunnssikkerhetOgBeredskap] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_SamfunnssikkerhetOgBeredskap table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	Kommuneundersøkelsen	6798	1922
+2	Kommuneundersøkelsen	6911	2068
+3	Kommuneundersøkelsen	1365	2183
+*/
+
+
+CREATE TABLE [RawDataMappedToDimRegion_Sosialtjenesten] (
+	[ID] BIGINT NOT NULL IDENTITY(1,1), 
+	human_readable_table_name VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[raw_data_row_ID] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL
+)
+
+/*
+3 rows from RawDataMappedToDimRegion_Sosialtjenesten table:
+ID	human_readable_table_name	raw_data_row_ID	dim_region_key
+1	13138	25142	2104
+2	13138	77695	2104
+3	12012	22622	2104
+*/
+
+
+CREATE TABLE [SSBKostragrupperMappedToKommuner] (
+	kostragruppe VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[kostragruppeNavn] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kommunenummer VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kommunenavn VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[år] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from SSBKostragrupperMappedToKommuner table:
+kostragruppe	kostragruppeNavn	kommunenummer	kommunenavn	år
+EKG14	KOSTRA-gruppe 14	4620	Ulvik	2024
+EKG05	KOSTRA-gruppe 5	4622	Kvam	2024
+EKG09	KOSTRA-gruppe 9	4647	Sunnfjord	2024
+*/
+
+
+CREATE TABLE [SSBRegionEndringer] (
+	[gammeltNr] VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[gammeltNavn] VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[nyttNr] VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[nyttNavn] VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[endringsDato] DATE NULL, 
+	type VARCHAR(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from SSBRegionEndringer table:
+gammeltNr	gammeltNavn	nyttNr	nyttNavn	endringsDato	type
+
+*/
+
+
+CREATE TABLE dim_agent (
+	dim_agent_key INTEGER NOT NULL IDENTITY(1,1), 
+	agentgruppe VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[kildesystemNavn] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[kildesystemId] INTEGER NULL, 
+	CONSTRAINT [PK__dim_agen__59CB14882E2F06FF] PRIMARY KEY (dim_agent_key)
+)
+
+/*
+3 rows from dim_agent table:
+dim_agent_key	agentgruppe	kildesystemNavn	kildesystemId
+
+*/
+
+
+CREATE TABLE dim_category (
+	dim_category_key INTEGER NOT NULL IDENTITY(1,1), 
+	navn VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[kildesystemId] INTEGER NULL, 
+	[kildesystemNavn] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	CONSTRAINT [PK__dim_cate__CD402BAEE0004E19] PRIMARY KEY (dim_category_key)
+)
+
+/*
+3 rows from dim_category table:
+dim_category_key	navn	kildesystemId	kildesystemNavn
+
+*/
+
+
+CREATE TABLE dim_dato (
+	dim_dato_key INTEGER NOT NULL, 
+	dato DATE NOT NULL, 
+	dag TINYINT NOT NULL, 
+	ukedag TINYINT NOT NULL, 
+	[ukedagNavn] VARCHAR(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[ukedagNavnKort] CHAR(3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[dagIAaret] SMALLINT NOT NULL, 
+	ukenummer TINYINT NOT NULL, 
+	maaned TINYINT NOT NULL, 
+	maanedsnavn VARCHAR(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[maanedsnavnKort] CHAR(3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	kvartal TINYINT NOT NULL, 
+	[kvartalNavn] VARCHAR(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	aar INTEGER NOT NULL, 
+	periode CHAR(6) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[maanedAar] CHAR(7) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[erHelg] BIT NOT NULL, 
+	[erFridag] BIT NOT NULL, 
+	CONSTRAINT [PK__dim_dato__8C8ACDC24A1CA02F] PRIMARY KEY (dim_dato_key)
+)
+
+/*
+3 rows from dim_dato table:
+dim_dato_key	dato	dag	ukedag	ukedagNavn	ukedagNavnKort	dagIAaret	ukenummer	maaned	maanedsnavn	maanedsnavnKort	kvartal	kvartalNavn	aar	periode	maanedAar	erHelg	erFridag
+-1	1900-01-01	0	0	Ukjent	-1 	-1	0	0	Ukjent	-1 	0	Ukjent	-1	Ukjent	Ukjent 	True	True
+20100101	2010-01-01	1	5	fredag	FRE	1	1	1	januar	JAN	1	1. kvartal	2010	201001	2010JAN	False	False
+20100102	2010-01-02	2	6	lørdag	LØR	2	1	1	januar	JAN	1	1. kvartal	2010	201001	2010JAN	True	False
+*/
+
+
+CREATE TABLE dim_indikator (
+	navn NVARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	maaleenhet NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	human_readable_table_name NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	eier NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	eierbeskrivelse NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[eierSistEndret] DATE NULL, 
+	[fraDato] DATE NULL, 
+	[tilDato] DATE NULL, 
+	fagomraade NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL IDENTITY(1,1), 
+	[eierbeskrivelseURL] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	aktiv BIT NOT NULL DEFAULT ((1))
+)
+
+/*
+3 rows from dim_indikator table:
+navn	maaleenhet	human_readable_table_name	eier	eierbeskrivelse	eierSistEndret	fraDato	tilDato	fagomraade	dim_indikator_key	eierbeskrivelseURL	aktiv
+Hjemmebesøk av jordmor innen tre døgn etter hjemkomst	prosent	11993	SSB	Statistikken gir ei oversikt over kommunehelsetenesta. Statistikken omfattar opplysningar om fastleg	2023-06-15	None	None	Kommunehelsetjenesten	1036	https://www.ssb.no/helse/helsetjenester/statistikk/kommunehelsetenesta#om-statistikken	True
+Barn (antall)	antall	11993	SSB	Statistikken gir ei oversikt over kommunehelsetenesta. Statistikken omfattar opplysningar om fastleg	2023-06-15	None	None	Kommunehelsetjenesten	1037	https://www.ssb.no/helse/helsetjenester/statistikk/kommunehelsetenesta#om-statistikken	True
+Med i fritidsorganisasjon, ungdom (andel)	andel	Med i fritidsorganisasjon, ungdom (andel)	KHS	Andel ungdomsskoleelever som svarte «Ja, jeg er med nå» på spørsmålet: «Er du, eller har du tidliger	2023-10-12	None	None	Kommunehelsetjenesten	1038	https://khs.fhi.no/webview/index.jsp?headers=AAR&SOESslice=0&AARslice=2021_2021&stubs=GEOGRAFI&measu	True
+*/
+
+
+CREATE TABLE dim_orgenhet (
+	dim_orgenhet_key INTEGER NOT NULL IDENTITY(1,1), 
+	[kortNavn ] NCHAR(4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	navn NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	CONSTRAINT [PK__dim_orge__B2B459671559494B] PRIMARY KEY (dim_orgenhet_key)
+)
+
+/*
+3 rows from dim_orgenhet table:
+dim_orgenhet_key	kortNavn 	navn
+1	FMAA	Fylkesmannen i Aust-Agder
+2	FMBU	Fylkesmannen i Buskerud
+3	FMFI	Fylkesmannen i Finnmark
+*/
+
+
+CREATE TABLE dim_region (
+	kommunenummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kommunenavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fylkesnummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fylkesnavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	omraadeid NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	omraadenavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	type NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[fraDato] DATE NULL, 
+	[tilDato] DATE NULL, 
+	dim_region_key INTEGER NOT NULL IDENTITY(1,1), 
+	bydelsnummer VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	bydelsnavn VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kostragruppe INTEGER NULL, 
+	strukturendring_sammenslaaing BIT NULL, 
+	strukturendring_loesrivelse BIT NULL, 
+	CONSTRAINT dim_region_key_pk PRIMARY KEY (dim_region_key)
+)
+
+/*
+3 rows from dim_region table:
+kommunenummer	kommunenavn	fylkesnummer	fylkesnavn	omraadeid	omraadenavn	type	fraDato	tilDato	dim_region_key	bydelsnummer	bydelsnavn	kostragruppe	strukturendring_sammenslaaing	strukturendring_loesrivelse
+None	None	None	None	EKG06	KOSTRA-gruppe 6	omrade	2020-01-01	2099-12-31	1686	None	None	None	None	None
+None	None	None	None	EKG16	KOSTRA-gruppe 16	omrade	2020-01-01	2099-12-31	1687	None	None	None	None	None
+None	None	None	None	EKG08	KOSTRA-gruppe 8	omrade	2020-01-01	2099-12-31	1688	None	None	None	None	None
+*/
+
+
+CREATE TABLE dim_region2 (
+	kommunenummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kommunenavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fylkesnummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fylkesnavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	omraadeid NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	omraadenavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	type NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[fraDato] DATE NULL, 
+	[tilDato] DATE NULL, 
+	dim_region_key INTEGER NOT NULL IDENTITY(1,1), 
+	bydelsnummer VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	bydelsnavn VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kostragruppe INTEGER NULL, 
+	strukturendring_sammenslaaing BIT NULL, 
+	strukturendring_loesrivelse BIT NULL
+)
+
+/*
+3 rows from dim_region2 table:
+kommunenummer	kommunenavn	fylkesnummer	fylkesnavn	omraadeid	omraadenavn	type	fraDato	tilDato	dim_region_key	bydelsnummer	bydelsnavn	kostragruppe	strukturendring_sammenslaaing	strukturendring_loesrivelse
+None	None	None	None	EKG06	KOSTRA-gruppe 6	omrade	2020-01-01	2099-12-31	1686	None	None	None	None	None
+None	None	None	None	EKG16	KOSTRA-gruppe 16	omrade	2020-01-01	2099-12-31	1687	None	None	None	None	None
+None	None	None	None	EKG08	KOSTRA-gruppe 8	omrade	2020-01-01	2099-12-31	1688	None	None	None	None	None
+*/
+
+
+CREATE TABLE dim_region_backup (
+	kommunenummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kommunenavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fylkesnummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fylkesnavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	omraadeid NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	omraadenavn NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	type NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[fraDato] DATE NULL, 
+	[tilDato] DATE NULL, 
+	dim_region_key INTEGER NOT NULL IDENTITY(1,1), 
+	bydelsnummer VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	bydelsnavn VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kostragruppe INTEGER NULL, 
+	strukturendring_sammenslaaing BIT NULL, 
+	strukturendring_loesrivelse BIT NULL
+)
+
+/*
+3 rows from dim_region_backup table:
+kommunenummer	kommunenavn	fylkesnummer	fylkesnavn	omraadeid	omraadenavn	type	fraDato	tilDato	dim_region_key	bydelsnummer	bydelsnavn	kostragruppe	strukturendring_sammenslaaing	strukturendring_loesrivelse
+None	None	None	None	None	None	Bydel	2020-01-01	2099-12-31	1744	030101	Gamle Oslo	None	None	None
+None	None	None	None	None	None	Bydel	2020-01-01	2099-12-31	1755	030102	Grünerløkka	None	None	None
+None	None	None	None	None	None	Bydel	2020-01-01	2099-12-31	1747	030103	Sagene	None	None	None
+*/
+
+
+CREATE TABLE dim_region_changes (
+	gammelt_nummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	gammelt_navn VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	nytt_nummer VARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	nytt_navn VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	endrings_dato DATE NULL, 
+	strukturendring_sammenslaaing BIT NULL, 
+	strukturendring_loesrivelse BIT NULL, 
+	type VARCHAR(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from dim_region_changes table:
+gammelt_nummer	gammelt_navn	nytt_nummer	nytt_navn	endrings_dato	strukturendring_sammenslaaing	strukturendring_loesrivelse	type
+EKG01	KOSTRA-gruppe 1	None	None	None	None	None	Kostragruppe
+EKG02	KOSTRA-gruppe 2	None	None	None	None	None	Kostragruppe
+EKG03	KOSTRA-gruppe 3	None	None	None	None	None	Kostragruppe
+*/
+
+
+CREATE TABLE dim_sakstype (
+	dim_sakstype_key INTEGER NOT NULL IDENTITY(1,1), 
+	visningsnavn NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[kildesystemNavn] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[kildesystemId] INTEGER NOT NULL, 
+	CONSTRAINT [PK__dim_saks__6500313DE7BD8973] PRIMARY KEY (dim_sakstype_key)
+)
+
+/*
+3 rows from dim_sakstype table:
+dim_sakstype_key	visningsnavn	kildesystemNavn	kildesystemId
+1	Ukjent	Ukjent	-1
+2	Ukategorisert sakstype	NESTOR	0
+3	Tilsynssak	NESTOR	5
+*/
+
+
+CREATE TABLE dim_sakstype_underkategori (
+	dim_sakstype_underkategori_key INTEGER NOT NULL IDENTITY(1,1), 
+	[kildesystemId] INTEGER NULL, 
+	[kildesystemNavn] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	beskrivelse NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	CONSTRAINT [PK__dim_saks__638A805889685671] PRIMARY KEY (dim_sakstype_underkategori_key)
+)
+
+/*
+3 rows from dim_sakstype_underkategori table:
+dim_sakstype_underkategori_key	kildesystemId	kildesystemNavn	beskrivelse
+1	113	NESTOR	Nødvendig helsehjelp
+2	182	NESTOR	Syketransport
+3	212	NESTOR	Helse/omsorg for øvrig
+*/
+
+
+CREATE TABLE fact_barnehage_nokkeltall (
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	eierform VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	barnehagestr VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] INTEGER NOT NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	barnehagetype VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_barnehage_nokkeltall table:
+dim_region_key	dim_indikator_key	eierform	barnehagestr	verdi	år	id	barnehagetype
+1994	692	None	None	None	2020	1	None
+1796	692	None	None	None	2015	2	None
+1837	692	None	None	97.5000000000	2019	3	None
+*/
+
+
+CREATE TABLE fact_barnevern_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	barnevernstiltak VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	alder VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] INTEGER NOT NULL
+)
+
+/*
+3 rows from fact_barnevern_nokkeltall table:
+id	dim_region_key	dim_indikator_key	barnevernstiltak	alder	verdi	år
+1	2493	146	Hjelpetiltak	0-17 år	None	2018
+2	2316	146	Omsorgstiltak	0-17 år	434.0000000000	2019
+3	1727	146	Omsorgstiltak	0-22 år	None	2019
+*/
+
+
+CREATE TABLE fact_befolkning_nokkeltall (
+	[år] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	alder VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	arbeidsstyrkestatus VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[kjønn] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	tettbygd_eller_spredtbygd VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	familietype VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[utdanningsnivå] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[næringSN2007] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	sektor VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	fagutdanning VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[prioritertArbeidsstyrkestatus] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	innvandringskategori VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	alternativ VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[typeSosialKontakt] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	funksjonsproblem VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[typeOrganisasjon] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	ressurs VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	aktivitet VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kvartal NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_befolkning_nokkeltall table:
+år	dim_region_key	dim_indikator_key	verdi	alder	id	arbeidsstyrkestatus	kjønn	tettbygd_eller_spredtbygd	familietype	utdanningsnivå	næringSN2007	sektor	fagutdanning	prioritertArbeidsstyrkestatus	innvandringskategori	alternativ	typeSosialKontakt	funksjonsproblem	typeOrganisasjon	ressurs	aktivitet	kvartal
+2022	3034	492	0E-10	15-74 år	1	None	None	None	None	Uoppgitt	86-87 Helsetjenester inkl. pleie og omsorgstjenester i institusjon	None	None	None	None	None	None	None	None	None	None	None
+2015	2168	492	79.0000000000	Alle aldre	2	None	None	None	None	Helse- og sosialfaglig utdanning, i alt	86-87 Helsetjenester inkl. pleie og omsorgstjenester i institusjon	None	None	None	None	None	None	None	None	None	None	None
+2015	2168	492	79.0000000000	15-74 år	3	None	None	None	None	Helse- og sosialfaglig utdanning, i alt	86-87 Helsetjenester inkl. pleie og omsorgstjenester i institusjon	None	None	None	None	None	None	None	None	None	None	None
+*/
+
+
+CREATE TABLE fact_boligsosialt_arbeid_nokkeltall (
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] INTEGER NOT NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1)
+)
+
+/*
+3 rows from fact_boligsosialt_arbeid_nokkeltall table:
+dim_region_key	dim_indikator_key	verdi	år	id
+1957	797	None	2012	1
+2387	797	None	2008	2
+2428	797	None	2014	3
+*/
+
+
+CREATE TABLE fact_folkehelse_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] NVARCHAR(20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[kjønn] VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[årstrinn] VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[treningsOgMosjonsaktivitet] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	alder VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	levevane VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[typeSosialKontakt] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	friluftslivsaktivitet VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[typeBomiljø] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	familiefase VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	landsdel VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_folkehelse_nokkeltall table:
+id	dim_region_key	dim_indikator_key	verdi	år	kjønn	årstrinn	treningsOgMosjonsaktivitet	alder	levevane	typeSosialKontakt	friluftslivsaktivitet	typeBomiljø	familiefase	landsdel
+1	2498	562	35.0000000000	2013	Menn	None	Spilt volleyball	16-24 år	None	None	None	None	None	None
+2	2498	562	None	2013	Kvinner	None	Drevet med ridning	45-66 år	None	None	None	None	None	None
+3	2498	562	None	1997	Begge kjønn	None	Trent spinning, på tredemølle eller med treningsapparat	Alder i alt	None	None	None	None	None	None
+*/
+
+
+CREATE TABLE fact_grunnskole_nokkeltall (
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	eierform VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[Kjønn] VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[Prøve] VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[år] VARCHAR(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	[Årstrinn] VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[fullføringsgrad] VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	alder VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	funksjon VARCHAR(3000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[ForeldrenesUtdanningsnivaa] VARCHAR(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_grunnskole_nokkeltall table:
+dim_region_key	dim_indikator_key	eierform	verdi	Kjønn	Prøve	år	id	Årstrinn	fullføringsgrad	alder	funksjon	ForeldrenesUtdanningsnivaa
+2089	144	Privat eiet	None	Alle kjønn	Lesing	2017-18	2363	5. årstrinn	None	None	None	None
+2397	144	Alle eierformer	None	Gutt	Regning	2020-21	2364	5. årstrinn	None	None	None	None
+2387	144	Privat eiet	None	Jente	Engelsk	2021-22	2365	5. årstrinn	None	None	None	None
+*/
+
+
+CREATE TABLE fact_integrering_nokkeltall (
+	[år] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	innvandringskategori VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	landbakgrunn VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	bosetting VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[spørsmål] NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_integrering_nokkeltall table:
+år	dim_region_key	dim_indikator_key	verdi	innvandringskategori	landbakgrunn	id	bosetting	spørsmål
+2017	1853	271	0E-10	Norskfødte med innvandrerforeldre	Østerrike	2345	None	None
+2023	2355	271	0E-10	Norskfødte med innvandrerforeldre	Andorra	2346	None	None
+2022	1841	271	0E-10	Innvandrere	Fiji	2347	None	None
+*/
+
+
+CREATE TABLE fact_klima_miljo_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	[år] NVARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	verdi NUMERIC(20, 10) NULL, 
+	dyr VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[årsak] VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[verneformål] NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	elv NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	bruk NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	sektor NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	arealbrukskategori NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_klima_miljo_nokkeltall table:
+id	dim_region_key	dim_indikator_key	år	verdi	dyr	årsak	verneformål	elv	bruk	sektor	arealbrukskategori
+1	2498	909	2018	0E-10	None	None	None	Torvikelva (Gjemnes)	Fisk sleppt ut att	None	None
+2	2498	909	2016	393423.0000000000	None	None	None	Elver i alt	Avliva fisk	None	None
+3	2498	909	2016	1506.0000000000	None	None	None	Lyngdalselva (Lygna)	Avliva fisk	None	None
+*/
+
+
+CREATE TABLE fact_kommunal_okonomi_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] INTEGER NOT NULL, 
+	regnskapsbegrep VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	funksjon VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	art VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[nøkkeltall] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	kategori VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	tjeneste VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_kommunal_okonomi_nokkeltall table:
+id	dim_region_key	dim_indikator_key	verdi	år	regnskapsbegrep	funksjon	art	nøkkeltall	kategori	tjeneste
+1	1993	641	None	2017	None	233 Annet forebyggende helsearbeid	Korrigerte brutto driftsutgifter på funksjon/tjenesteområde	Beløp (1000 kr)	None	None
+2	1800	641	1259.0000000000	2020	None	232 Helsestasjons- og skolehelsetjeneste	Brutto driftsutgifter på funksjon/tjenesteområde	Beløp (1000 kr)	None	None
+3	2019	641	237.0000000000	2021	None	233 Annet forebyggende helsearbeid	Brutto driftsutgifter på funksjon/tjenesteområde	Beløp per innbygger (kr)	None	None
+*/
+
+
+CREATE TABLE fact_kommunal_planlegging_nokkeltall (
+	[år] INTEGER NOT NULL, 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	[behandlingsinstansOgBehandlingsresultat] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[reguleringsplanerSomDetKlagesPaa] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[årsakTilKlage] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_kommunal_planlegging_nokkeltall table:
+år	dim_region_key	dim_indikator_key	verdi	id	behandlingsinstansOgBehandlingsresultat	reguleringsplanerSomDetKlagesPaa	årsakTilKlage
+2016	2166	672	None	1	Klager som ble mottatt i kommunen	Klager på områdereguleringer	None
+2017	2231	672	None	2	Klager som kommunen gjorde vedtak på	 Klager på reguleringsplaner i alt	None
+2022	2495	672	None	3	Kommunale vedtak som ble omgjort hos statsforvalteren	 Klager på reguleringsplaner i alt	None
+*/
+
+
+CREATE TABLE fact_kommunehelsetjenesten_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	[år] VARCHAR(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	funksjon VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	avtaleform VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[sosioøkonomiskeRessurser] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[helseundersøkelser_helsekonsultasjoner] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_kommunehelsetjenesten_nokkeltall table:
+id	dim_region_key	dim_indikator_key	år	verdi	funksjon	avtaleform	sosioøkonomiskeRessurser	helseundersøkelser_helsekonsultasjoner
+1	2442	484	2016	2066.0000000000	None	None	None	None
+2	1711	484	2021	962425.0000000000	None	None	None	None
+3	1784	484	2015	2271.0000000000	None	None	None	None
+*/
+
+
+CREATE TABLE fact_landbruk_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	husdyrslag VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	sortiment VARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_landbruk_nokkeltall table:
+id	dim_region_key	dim_indikator_key	husdyrslag	verdi	år	sortiment
+1	2924	771	None	0E-10	2020	Lauv
+2	2924	771	None	0E-10	2017	Ved til brensel
+3	2925	771	None	0E-10	2018	Lauv
+*/
+
+
+CREATE TABLE fact_nestor_planlagt_tilsyn_oversikt_so_far_this_year (
+	[PlanArId ] INTEGER NULL, 
+	[EmbeteSortNr] INTEGER NULL, 
+	dim_orgenhet_key INTEGER NOT NULL, 
+	[SaksomraadeId] NVARCHAR(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[Saksomraade] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[TjenesteKategoriId] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[TjenesteKategori] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[Resultatmaal] INTEGER NULL, 
+	[SumPlanlagt] INTEGER NULL, 
+	[SumGjennomfort] INTEGER NULL, 
+	CONSTRAINT [FK_fact_nestor_planlagt_tilsyn_oversikt_so_far_this_year__to__dim_orgenhet] FOREIGN KEY(dim_orgenhet_key) REFERENCES dim_orgenhet (dim_orgenhet_key) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+/*
+3 rows from fact_nestor_planlagt_tilsyn_oversikt_so_far_this_year table:
+PlanArId 	EmbeteSortNr	dim_orgenhet_key	SaksomraadeId	Saksomraade	TjenesteKategoriId	TjenesteKategori	Resultatmaal	SumPlanlagt	SumGjennomfort
+2024	20	20	H	Helse/omsorg	KHELSEOMSORG	Kommunale helse- og omsorgstjenester	275	273	0
+2024	20	20	H	Helse/omsorg	SPES-HTJ	Spesialisthelsetjenester	65	64	0
+2024	20	20	S	Sosial	NAV	Sosiale tjenester i Nav	90	0	0
+*/
+
+
+CREATE TABLE fact_nestor_sakstall (
+	[sakGuid ] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[rekkefoelgeEllerJpNr] INTEGER NULL, 
+	[saksOmraadeId] NVARCHAR(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[saksOmraade] NVARCHAR(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	dim_sakstype_key INTEGER NOT NULL, 
+	dim_sakstype_underkategori_key INTEGER NOT NULL, 
+	dim_orgenhet_key INTEGER NOT NULL, 
+	[avdTeam] NVARCHAR(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[saksNrEphorteAar] INTEGER NULL, 
+	[saksNrEphorteLoepeNr] INTEGER NULL, 
+	[resultatAar] INTEGER NULL, 
+	[erNrpSak] BIT NULL, 
+	[sbTidAntallDager] INTEGER NULL, 
+	[harLovBruddEndaIkkeRettet] BIT NULL, 
+	[erEnRestanse] BIT NULL, 
+	[ephorteSakUrl] NVARCHAR(2083) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[antallSaker] INTEGER NULL, 
+	[initialtOpprettet] INTEGER NOT NULL, 
+	[Inndato] INTEGER NOT NULL, 
+	[utDato] INTEGER NOT NULL, 
+	[sistEndret] INTEGER NOT NULL, 
+	[AntallBeboereTotalt] INTEGER NULL, 
+	[AntallTilbudtSamtaler] INTEGER NULL, 
+	[AntallSamtalerTatt] INTEGER NULL, 
+	[sistHentetFraNESTOR] DATETIME NULL, 
+	[ErLokaltAvklart] BIT NULL, 
+	[Subkategori] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	CONSTRAINT [FK__fact_nest__initi__1EA48E88] FOREIGN KEY([initialtOpprettet]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK__fact_nest__Innda__1F98B2C1] FOREIGN KEY([Inndato]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK__fact_nest__sistE__1DB06A4F] FOREIGN KEY([sistEndret]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK__fact_nest__utDat__208CD6FA] FOREIGN KEY([utDato]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK_fact_nestor_sakstall__to__dim_orgenhet] FOREIGN KEY(dim_orgenhet_key) REFERENCES dim_orgenhet (dim_orgenhet_key) ON DELETE CASCADE ON UPDATE CASCADE, 
+	CONSTRAINT [FK_fact_nestor_sakstall__to__dim_sakstype] FOREIGN KEY(dim_sakstype_key) REFERENCES dim_sakstype (dim_sakstype_key) ON DELETE CASCADE ON UPDATE CASCADE, 
+	CONSTRAINT [FK_fact_nestor_sakstall__to__dim_sakstype_underkategori] FOREIGN KEY(dim_sakstype_underkategori_key) REFERENCES dim_sakstype_underkategori (dim_sakstype_underkategori_key) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+/*
+3 rows from fact_nestor_sakstall table:
+sakGuid 	rekkefoelgeEllerJpNr	saksOmraadeId	saksOmraade	dim_sakstype_key	dim_sakstype_underkategori_key	dim_orgenhet_key	avdTeam	saksNrEphorteAar	saksNrEphorteLoepeNr	resultatAar	erNrpSak	sbTidAntallDager	harLovBruddEndaIkkeRettet	erEnRestanse	ephorteSakUrl	antallSaker	initialtOpprettet	Inndato	utDato	sistEndret	AntallBeboereTotalt	AntallTilbudtSamtaler	AntallSamtalerTatt	sistHentetFraNESTOR	ErLokaltAvklart	Subkategori
+59d78967-0a84-4369-ba48-2d82cca0f5f3	1	H	Helse/omsorg	7	19	20	Helse og omsorg	2020	9743	None	False	1170	None	False	https://fmeph6web1.fylkesmannen.local/ElementsSFIN/rm/FMIN_PROD/locator?SHOW=SA&SA_SAAR=2020&SA_SEKN	1	20200910	20201130	-1	20200910	None	None	None	2024-02-13 01:01:34	False	Ny gjennomgang/kontroll etter 3 md.
+05bdb228-22d8-49dd-8f29-225c2d93359d	1	H	Helse/omsorg	7	19	20	Helse og omsorg	2021	2330	None	False	987	None	False	https://fmeph6web1.fylkesmannen.local/ElementsSFIN/rm/FMIN_PROD/locator?SHOW=SA&SA_SAAR=2021&SA_SEKN	1	20210224	20210601	-1	20210224	None	None	None	2024-02-13 01:01:34	False	Ny gjennomgang/kontroll etter 3 md.
+23f204fe-1b20-47e3-bc7c-71548c1d8654	1	H	Helse/omsorg	7	19	20	Helse og omsorg	2023	2191	None	False	280	None	True	https://fmeph6web1.fylkesmannen.local/ElementsSFIN/rm/FMIN_PROD/locator?SHOW=SA&SA_SAAR=2023&SA_SEKN	1	20230219	20230509	-1	20230219	None	None	None	2024-02-13 01:01:34	False	Ny gjennomgang/kontroll etter 3 md.
+*/
+
+
+CREATE TABLE fact_nilex_sakstall (
+	dim_orgenhet_key INTEGER NOT NULL, 
+	dim_agent_key INTEGER NOT NULL, 
+	dim_sakstype_key INTEGER NOT NULL, 
+	dim_category_key INTEGER NOT NULL, 
+	[Type] VARCHAR(800) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[Version] INTEGER NULL, 
+	[CreatedDate] INTEGER NULL, 
+	[UpdatedDate] INTEGER NULL, 
+	[BaseStatus] INTEGER NULL, 
+	[Priority] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[IsMajor] BIT NULL, 
+	[BaseEntitySource] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[ReferenceNo] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[Resolution] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[IsSecurity] BIT NULL, 
+	[FormId] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[OnBehalfOf] BIT NULL, 
+	[BaseEntityStatus] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[SspFormId] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[SlaSummary] INTEGER NULL, 
+	[MainWayPoint] INTEGER NULL, 
+	[Urgency] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[Impact] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[AssignedDate] INTEGER NULL, 
+	[ServiceEntitiesCount] INTEGER NULL, 
+	[CiCount] INTEGER NULL, 
+	[TaskCount] INTEGER NULL, 
+	[SlaStartTimeCounter] INTEGER NULL, 
+	[EmailOrigin] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[IsClosedFromSsp] BIT NULL, 
+	[MarkedForDelete] BIT NULL, 
+	[EntityType] VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	CONSTRAINT [FK__fact_nile__Assig__29221CFB] FOREIGN KEY([AssignedDate]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK__fact_nile__Creat__2B0A656D] FOREIGN KEY([CreatedDate]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK__fact_nile__SlaSt__2A164134] FOREIGN KEY([SlaStartTimeCounter]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK__fact_nile__Updat__2645B050] FOREIGN KEY([UpdatedDate]) REFERENCES dim_dato (dim_dato_key), 
+	CONSTRAINT [FK_fact_nilex_sakstall__to__dim_agent] FOREIGN KEY(dim_agent_key) REFERENCES dim_agent (dim_agent_key) ON DELETE CASCADE ON UPDATE CASCADE, 
+	CONSTRAINT [FK_fact_nilex_sakstall__to__dim_category] FOREIGN KEY(dim_category_key) REFERENCES dim_category (dim_category_key) ON DELETE CASCADE ON UPDATE CASCADE, 
+	CONSTRAINT [FK_fact_nilex_sakstall__to__dim_orgenhet] FOREIGN KEY(dim_orgenhet_key) REFERENCES dim_orgenhet (dim_orgenhet_key) ON DELETE CASCADE ON UPDATE CASCADE, 
+	CONSTRAINT [FK_fact_nilex_sakstall__to__sakstype] FOREIGN KEY(dim_sakstype_key) REFERENCES dim_sakstype (dim_sakstype_key) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+/*
+3 rows from fact_nilex_sakstall table:
+dim_orgenhet_key	dim_agent_key	dim_sakstype_key	dim_category_key	Type	Version	CreatedDate	UpdatedDate	BaseStatus	Priority	IsMajor	BaseEntitySource	ReferenceNo	Resolution	IsSecurity	FormId	OnBehalfOf	BaseEntityStatus	SspFormId	SlaSummary	MainWayPoint	Urgency	Impact	AssignedDate	ServiceEntitiesCount	CiCount	TaskCount	SlaStartTimeCounter	EmailOrigin	IsClosedFromSsp	MarkedForDelete	EntityType
+
+*/
+
+
+CREATE TABLE fact_omsorgstjenesten_nokkeltall (
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] INTEGER NOT NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	alder VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[typeSykelighet] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[kjønn] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	tjenestetype VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	utdanning VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	tjenestegrupper VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_omsorgstjenesten_nokkeltall table:
+dim_region_key	dim_indikator_key	verdi	år	id	alder	typeSykelighet	kjønn	tjenestetype	utdanning	tjenestegrupper
+1840	494	None	2016	1	None	None	None	None	Hjelpepleier	None
+1840	494	65.1700000000	2022	2	None	None	None	None	Hjelpepleier	None
+2180	494	4.2700000000	2021	3	None	None	None	None	Geriatrisk sykepleier	None
+*/
+
+
+CREATE TABLE fact_reindrift_nokkeltall (
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	[søknadstype] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	vedtakstype VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	[år] INTEGER NOT NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	innsigelsesmyndighet NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[begrunnelserBruktForInnsigelser] NVARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_reindrift_nokkeltall table:
+dim_region_key	dim_indikator_key	søknadstype	vedtakstype	verdi	år	id	innsigelsesmyndighet	begrunnelserBruktForInnsigelser
+1857	810	None	None	0E-10	2021	1	Fylkeskommunen	Barn og unges oppvekstforhold
+1975	810	None	None	0E-10	2018	2	Riksantikvaren	Forurensning eller støy
+2401	810	None	None	0E-10	2021	3	Kystverket	Drikkevann
+*/
+
+
+CREATE TABLE fact_samfunnssikkerhet_og_beredskap (
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	verdi INTEGER NULL, 
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	[år] VARCHAR(255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	[samletStatus] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[gjennomførtÅr] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_samfunnssikkerhet_og_beredskap table:
+dim_region_key	dim_indikator_key	verdi	id	år	samletStatus	gjennomførtÅr
+1866	465	None	1	2021	Distribuert	Ikke oppgitt
+1878	465	1	2	2018	Gjennomført	2017
+1806	465	None	3	2023	Distribuert	Ikke oppgitt
+*/
+
+
+CREATE TABLE fact_sosialtjenesten_nokkeltall (
+	id INTEGER NOT NULL IDENTITY(1,1), 
+	dim_region_key INTEGER NOT NULL, 
+	dim_indikator_key INTEGER NOT NULL, 
+	[år] INTEGER NOT NULL, 
+	verdi NUMERIC(28, 10) NULL, 
+	bygningstype VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	[bygningsår] VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	funksjon VARCHAR(max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+/*
+3 rows from fact_sosialtjenesten_nokkeltall table:
+id	dim_region_key	dim_indikator_key	år	verdi	bygningstype	bygningsår	funksjon
+5325	2468	735	2018	115.0000000000	None	None	None
+5326	1719	597	2020	None	None	None	731 Fylkesveiferjer
+5327	1712	597	2019	0E-10	None	None	733 Transportordninger for funksjonshemmede
+*/
+
+
+CREATE TABLE validation_results (
+	test_name VARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	is_error BIT NOT NULL, 
+	error_message VARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
+	validation_done_utc_date_time DATETIME NOT NULL, 
+	test_type VARCHAR(500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+)
+
+/*
+3 rows from validation_results table:
+test_name	is_error	error_message	validation_done_utc_date_time	test_type
+Test for null values in år in fact_tables	False		2024-01-05 18:19:34.470000	fact_tables
+Test for duplicate values in fact_tables	False		2024-01-05 18:28:00.313000	fact_tables
+Test for dim_indikator_keys in fact_tables with only null values in verdi	False		2024-01-05 18:19:23.690000	fact_tables
+*/
