@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from api.router import router
-from service.testfunc import addition
+
 
 app = FastAPI()
 

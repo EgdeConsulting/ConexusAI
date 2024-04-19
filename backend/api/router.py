@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Request
 from service.testfunc import addition
+from service import backendAI, openaiMethod,jsonopenaiMethod
 
 
 router = APIRouter()
@@ -27,3 +28,21 @@ async def read_item(request: Request):
 async def test(input_int1: int, input_int2: int):
     result =addition(input_int1, input_int2)
     return {"result": result}   
+
+@router.post("/openairoutes/")
+async def read_item(request: Request):
+    data = await request.json()
+    USER_INPUT = data.get("prompt")
+    answer = openaiMethod(USER_INPUT)
+    #function here! 
+    #answer = result from query
+    return { "answer": answer }
+
+@router.post("/openairoutesss/")
+async def read_item(request: Request):
+    data = await request.json()
+    USER_INPUT = data.get("prompt")
+    answer = jsonopenaiMethod(USER_INPUT)
+    #function here! 
+    #answer = result from query
+    return { "answer": answer }
