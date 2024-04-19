@@ -7,11 +7,12 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
 from langchain_community.tools.sql_database.tool import QuerySQLCheckerTool
+import pyodbc
 
 # Load the environment variables
 load_dotenv()
 
-print("db_schema_start:")
+print("Establishing a connection to Azure SQL Database...")
 
 # Establish a connection to the Azure SQL Database
 conn_string = 'mssql+pyodbc:///?odbc_connect=' + connection_string
@@ -20,7 +21,7 @@ db_uri = conn_string
 db = SQLDatabase.from_uri(db_uri)
 
 # Open the schema file til variable db_schema
-db_schema = open("schema_db.txt", "r")
+#db_schema = open("schema_db.txt", "r")
 
 print("db_schema___:")
 
@@ -94,11 +95,6 @@ print("db_schema4:")
 
 #print(sql_chain.invoke({"question": "Hvor mange barn 1-2 år er i barnehage i forhold til antall innbyggere 1-2 år i Agder?"}))
 
-"""
-def run_query(query):
-    return db.run(query)
-"""
-
 # Function to validate and run the query
 def validate_and_run_query(query):
 
@@ -124,7 +120,9 @@ full_chain = (
     #| StrOutputParser()
 )
 
-testing_query = "Hva er gjennomsnittsalder på barn i barnevernet?"
+#testing_query = "Hva er gjennomsnittsalder på barn i barnevernet?"
+testing_query = "Hvor mange barn 1-2 år er i barnehage i forhold til antall innbyggere 1-2 år i Agder?"
+#testing_query = "Hvor mange kvinner i Norge røyker?"
 
 print("This is the sql_chain.invoke:")
 print(sql_chain.invoke({"question": testing_query}))
