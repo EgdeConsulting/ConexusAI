@@ -19,10 +19,10 @@ def openaiMethod(user_message):
             model="gpt-3.5-turbo",
         )
         answer = chat_completion.choices[0].message.content
-        return jsonfy({"answer": answer}), 200
+        return answer  # Returner kun svaret
     except Exception as e:
-        # Returnerer en feilmelding og en 500 Internal Server Error statuskode hvis noe går galt.
-        return jsonfy({"error": f"En feil oppstod: {str(e)}"}), 500
+        # Løft en HTTPException som FastAPI vil håndtere
+        raise HTTPException(status_code=500, detail=f"En feil oppstod: {str(e)}")
     
 def jsonopenaiMethod(user_message):
         try:
