@@ -55,6 +55,7 @@ npm install
 
 4. Run the Development Server:
    Start the local development server by executing:
+
 ```bash
 npm run dev
 
@@ -75,19 +76,24 @@ To set up the ConexusAI backend on your local server, follow these steps:
 ### Set Up Virtual Environment:
 
 1. Navigate to the backend directory:
-   ```bash
-   cd path/to/conexusai/backend
+
+```bash
+cd path/to/conexusai/backend
+
 Replace path/to/conexusai/backend with the actual path to your backend directory.
 
 2. Create the virtual environment:
+
 ```bash
 python -m venv venv
 
 3. Activate the virtual environment:
+
 ```bash
 .\venv\Scripts\activate
 
 3. Install the required packages:
+
 ```bash
 pip install -r requirements.txt
 
@@ -97,12 +103,16 @@ To test the API endpoints locally, you can use Uvicorn, an ASGI server. Run the 
 
 ```bash
 uvicorn main:app --reload
+
 After starting the server, your API will be available at http://127.0.0.1:5000 by default.
 You can visit this URL in your web browser to interact with the API.
 For a more detailed view of available API routes, you can check the automatically generated documentation by navigating to:
+
 ```bash
 http://127.0.0.1:5000/docs
+
 or
+
 ```bash
 http://local_URL/docs
 
