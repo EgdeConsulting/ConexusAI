@@ -1,15 +1,3 @@
-export const GET = async ({ request }) => {
-  const autherHeader = request.headers.get("Authorization");
-
-  // if (autherHeader !== 'ConexusAI') {
-  //     return new Response(JSON.stringify({message:'Unauthorized: invalid credentials'}), { status: 401 });
-  // }
-  const res = await fetch("https://python-chat-api.onrender.com/python/prompt");
-  const data = await res.json();
-
-  return new Response(JSON.stringify({ data }), { status: 200 });
-};
-
 export const POST = async ({ request }) => {
   try {
     const { prompt } = await request.json(); // forespørselskroppen inneholder en "prompt"
