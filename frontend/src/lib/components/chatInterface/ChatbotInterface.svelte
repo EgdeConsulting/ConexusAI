@@ -43,6 +43,7 @@
       const { answer } = await response.json(); // Anta at responsen inneholder et felt "answer"
       isBotTyping = false;
       messages.splice(typingIndex, 1); // Fjern "boten skriver" meldingen
+      console.log("Received answer from backend:", answer);
       simulateTypingResponse(answer); // Vis svaret i chat
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
