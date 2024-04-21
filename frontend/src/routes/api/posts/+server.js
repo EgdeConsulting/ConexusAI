@@ -15,7 +15,7 @@ export const POST = async ({ request }) => {
 
     // Gjør en POST-forespørsel til det eksterne API-et med prompten
     const apiResponse = await fetch(
-      "https://conexusaiengine.azurewebsites.net/openairoutes",
+      "https://conexusaiengine.azurewebsites.net/openairoutes/",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

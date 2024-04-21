@@ -4,12 +4,23 @@
   export let sendMessage;
   export let userInput;
   export let isLoading;
-
+  let placeholderInput = "Spør AI....";
   function handleKeyDown(event) {
-    if (event.key === "Enter" && !isLoading && userInput.trim() !== "") {
+    // Send message when Enter is pressed, the input is not loading, not empty, and not placeholder text
+    if (event.key === "Enter") {
+      sendMessageIfValid();
+    }
+  }
+
+  function sendMessageIfValid() {
+    if (
+      !isLoading &&
+      userInput.trim() !== "" &&
+      userInput !== placeholderInput
+    ) {
       sendMessage(userInput);
       console.log("User input:", userInput);
-      userInput = ""; // Nullstill inputfeltet
+      userInput = ""; // Reset input field
     }
   }
 </script>
@@ -20,11 +31,11 @@
       type="textarea"
       bind:value={userInput}
       on:keydown={handleKeyDown}
-      placeholder="Spør AI...."
+      placeholder={placeholderInput}
     />
   </div>
   <div class="btn-tull">
-    <button on:click={sendMessage} disabled={isLoading}>
+    <button on:click={sendMessageIfValid} disabled={isLoading}>
       {#if isLoading}
         <img src={LoadingIcon} alt="Laster" />
       {:else}
@@ -35,11 +46,9 @@
 </div>
 
 <style>
-  
   .input-container {
     display: flex;
     margin-bottom: 0.625em;
-    
   }
   .input-area {
     background-color: #ffffff;

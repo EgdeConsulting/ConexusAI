@@ -48,6 +48,7 @@
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
       isLoading = false; // Sett isLoading til false
+      isBotTyping = false;
     } finally {
       isBotTyping = false;
       //messages.splice(typingIndex, 1); // Fjern "boten skriver" meldingen ved feil
@@ -59,6 +60,8 @@
     try {
       if (typeof text !== "string") {
         throw new Error("Expected text to be a string");
+        isLoading = false; // Sett isLoading til false
+        isBotTyping = false;
       }
       let partialText = "";
       for (let char of text) {
@@ -71,6 +74,8 @@
       isLoading = false;
     } catch (error) {
       console.error("The answer is empty or not iterable:", error);
+      isLoading = false; // Sett isLoading til false
+      isBotTyping = false;
     }
   }
 </script>
