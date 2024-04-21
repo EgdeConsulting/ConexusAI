@@ -32,7 +32,7 @@ This project was conducted in collaboration with Egde. The project was initiated
 
 ## Installation
 
-Frontend:
+**Frontend:**
 To set up the ConexusAI frontend on your local server, follow these steps:
 
 1. Prerequisites:
@@ -60,6 +60,28 @@ To set up the ConexusAI frontend on your local server, follow these steps:
 5. Open the Application:
 
 - Access the frontend by opening the local server URL in your web browser.
+
+------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+**Backend**
+
+To set up the ConexusAI backend on your local server, follow these steps:
+- Ensure you have Python installed on your system (preferably version 3.8 or newer).
+- It is recommended to use a virtual environment for Python projects. This keeps dependencies for the project separate and organized.
+
+### Set Up Virtual Environment:
+
+1. Navigate to the backend directory:
+   ```bash
+   cd path/to/conexusai/backend
+Replace path/to/conexusai/backend with the actual path to your backend directory.
+
+2. Create the virtual environment:
+`python -m venv venv`
+
+3. Activate the virtual environment:
+```.\venv\Scripts\activate```
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum faucibus iaculis. Nullam suscipit metus sed sem elementum, nec lacinia quam euismod. Mauris in sem nunc. Integer egestas consequat fringilla. Curabitur auctor, nunc porttitor sodales condimentum, massa sapien rhoncus elit, at pretium ex nisl eu velit. Sed ut metus eu mauris viverra feugiat. Etiam vel hendrerit neque, nec tincidunt mauris. Proin egestas sed sem at accumsan. Morbi sagittis lectus tincidunt nunc placerat, vel lobortis risus pharetra. Mauris sit amet justo ex. Proin nulla massa, lacinia eget pellentesque ac, egestas ut nibh. Proin augue lectus, posuere pharetra sollicitudin nec, facilisis a risus. Maecenas ac neque et felis rutrum sollicitudin et id felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales justo nec risus dapibus convallis.
 
