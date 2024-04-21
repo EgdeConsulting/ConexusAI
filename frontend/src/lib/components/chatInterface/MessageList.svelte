@@ -2,23 +2,35 @@
   import BotIcon from "../icons/BotIcon.svelte";
   export let messages = [];
   export let isBotTyping;
+  import isDarkMode  from "../navbar/NavbarSet.svelte";
+  
 </script>
 
-<div class="messages">
+<div class="messages" >
   {#each messages as message}
     <div class={`message ${message.sender}`}>
       <span class="sender"
         >{message.sender === "user" ? "Du:" : ""}
         {#if message.sender !== "user"}
           <BotIcon class="bot-icon" />
+          ConexusAI:
         {/if}
-        ConexusAI:
       </span>
+      <!-- må endre ifra message.text til message.type === "text" for å få det til å funke -->
       {#if message.text}
         <span class="text">{message.text}</span>
-      {/if}
-      {#if message.image}
-        <img src={message.image} alt="Bilde fra AI" class="image-response" />
+      {:else if message.type === "list"}
+        <ul>
+          {#each message.content as item}
+            <li>{item}</li>
+          {/each}
+        </ul>
+      {:else if message.type === "image"}
+        <img src={message.content} alt="Bilde fra AI" class="image-response" />
+      {:else if message.type === "pdf"}
+        <!-- Implementer visning av PDF -->
+      {:else if message.type === "excel"}
+        <!-- Implementer visning eller nedlasting av Excel-fil -->
       {/if}
     </div>
   {/each}
@@ -44,6 +56,10 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 5px;
     border: 1px solid #ccc;
+  }
+  .dark-mode {
+    background-color: #000; /* Svart bakgrunn for mørkt tema */
+    color: #140c0c; /* Hvit tekst for mørkt tema */
   }
   .message {
     margin: 5px 0;

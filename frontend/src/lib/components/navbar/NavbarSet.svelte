@@ -1,8 +1,8 @@
 <script>
   import { ExpandedButton, Switch } from "$lib";
+  import { writable } from "svelte/store";
 
-  let acceptTerms = false;
-  
+  export const isDarkMode = writable(false);
   export let buttons = [];
   export let showNavbar = false;
 </script>
@@ -12,12 +12,11 @@
     <p class="LogoConexusAI">ConexusAI</p>
     <div class="switch-container">
       <div>
-        <Switch bind:checked={acceptTerms} />
+        <Switch bind:checked={$isDarkMode} />
       </div>
       <div>
         <p class="dark-modus">Mørk modus</p>
       </div>
-      
     </div>
     <ExpandedButton {buttons} />
   </div>
@@ -30,7 +29,7 @@
     background-color: #00244e;
     height: 100%;
     width: 100%;
-   
+
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
@@ -55,7 +54,6 @@
     gap: 0.5rem; /* Gir litt plass mellom switch og tekst */
     justify-content: center;
     margin: 0.5rem;
-    
   }
   .dark-modus {
     height: 0.87rem;
