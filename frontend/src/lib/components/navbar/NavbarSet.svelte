@@ -60,7 +60,7 @@
     font-family: "Open Sans";
     font-size: 0.75rem;
     white-space: nowrap;
-    color: #d6de67;
+    color: #ffa800;
     margin: 0px;
   }
 </style>
