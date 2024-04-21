@@ -54,5 +54,14 @@
     justify-content: center;
     margin: 0.5rem;
   }
-  
+  .dark-modus {
+    height: 0.87rem;
+    width: 4.3rem;
+    font-family: "Open Sans";
+    font-size: 0.75rem;
+    white-space: nowrap; 
+    color: #ffa800;
+    margin: 0px;
+    
+  } 
 </style>
