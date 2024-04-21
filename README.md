@@ -74,40 +74,59 @@ To set up the ConexusAI backend on your local server, follow these steps:
 - It is recommended to use a virtual environment for Python projects. This keeps dependencies for the project separate and organized.
 
 ### Set Up Virtual Environment:
-
 1. Navigate to the backend directory:
-
 ```bash
 cd path/to/conexusai/backend
 ```
-Replace path/to/conexusai/backend with the actual path to your backend directory.
-
+- Replace path/to/conexusai/backend with the actual path to your backend directory.
 2. Create the virtual environment:
-
 ```bash
 python -m venv venv
 ```
 3. Activate the virtual environment:
-
+on winows:
 ```bash
 .\venv\Scripts\activate
 ```
-3. Install the required packages:
 
+**Install Dependencies:**
+1. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
-4. **Testing the Endpoints:**
-
-To test the API endpoints locally, you can use Uvicorn, an ASGI server. Run the following command from the root of your backend directory:
-
+**Set Up Environment Variables:**
+1. Create a .env file in the root of your backend directory and add your environment-specific variables:
 ```bash
+# .env content
+OPENAI_API_KEY=your_OPENAI_API_KEY
+SERVER_DB=your_server
+USERNAME_DB=your_username
+PASSWORD_DB=your_password
+DATABASE_DB=your_database
+```
+2. Load the environment variables in your application as needed, typically at the start of your main script.
+   
+**Set Up Environment Variables:**
+1. Create a .env file in the root of your backend directory and add your environment-specific variables:
+```bash
+# .env content
+OPENAI_API_KEY=your_OPENAI_API_KEY
+SERVER_DB=your_server
+USERNAME_DB=your_username
+PASSWORD_DB=your_password
+DATABASE_DB=your_database
+```
+2. Load the environment variables in your application as needed, typically at the start of your main script.
+ 
+**Testing the Endpoints:**
+To test the API endpoints locally, you can use Uvicorn, an ASGI server. Run the following command from the root of your backend directory:
+1. ```bash
 uvicorn main:app --reload
 ```
 After starting the server, your API will be available at http://127.0.0.1:5000 by default.
 You can visit this URL in your web browser to interact with the API.
 For a more detailed view of available API routes, you can check the automatically generated documentation by navigating to:
-
+2. 
 ```bash
 http://127.0.0.1:5000/docs
 ```
@@ -152,6 +171,8 @@ The ConexusAI frontend application is structured into various components, each s
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum faucibus iaculis. Nullam suscipit metus sed sem elementum, nec lacinia quam euismod. Mauris in sem nunc. Integer egestas consequat fringilla. Curabitur auctor, nunc porttitor sodales condimentum, massa sapien rhoncus elit, at pretium ex nisl eu velit. Sed ut metus eu mauris viverra feugiat. Etiam vel hendrerit neque, nec tincidunt mauris. Proin egestas sed sem at accumsan. Morbi sagittis lectus tincidunt nunc placerat, vel lobortis risus pharetra. Mauris sit amet justo ex. Proin nulla massa, lacinia eget pellentesque ac, egestas ut nibh. Proin augue lectus, posuere pharetra sollicitudin nec, facilisis a risus. Maecenas ac neque et felis rutrum sollicitudin et id felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales justo nec risus dapibus convallis.
 
 ## License
+
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum faucibus iaculis. Nullam suscipit metus sed sem elementum, nec lacinia quam euismod. Mauris in sem nunc. Integer egestas consequat fringilla. Curabitur auctor, nunc porttitor sodales condimentum, massa sapien rhoncus elit, at pretium ex nisl eu velit. Sed ut metus eu mauris viverra feugiat. Etiam vel hendrerit neque, nec tincidunt mauris. Proin egestas sed sem at accumsan. Morbi sagittis lectus tincidunt nunc placerat, vel lobortis risus pharetra. Mauris sit amet justo ex. Proin nulla massa, lacinia eget pellentesque ac, egestas ut nibh. Proin augue lectus, posuere pharetra sollicitudin nec, facilisis a risus. Maecenas ac neque et felis rutrum sollicitudin et id felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sodales justo nec risus dapibus convallis.
 
