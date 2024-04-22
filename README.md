@@ -105,22 +105,11 @@ PASSWORD_DB=your_password
 DATABASE_DB=your_database
 ```
 2. Load the environment variables in your application as needed, typically at the start of your main script.
-   
-**Set Up Environment Variables:**
-1. Create a .env file in the root of your backend directory and add your environment-specific variables:
-```bash
-# .env content
-OPENAI_API_KEY=your_OPENAI_API_KEY
-SERVER_DB=your_server
-USERNAME_DB=your_username
-PASSWORD_DB=your_password
-DATABASE_DB=your_database
-```
-2. Load the environment variables in your application as needed, typically at the start of your main script.
- 
+3.     
 **Testing the Endpoints:**
 To test the API endpoints locally, you can use Uvicorn, an ASGI server. Run the following command from the root of your backend directory:
-1. ```bash
+1.
+```bash
 uvicorn main:app --reload
 ```
 After starting the server, your API will be available at http://127.0.0.1:5000 by default.
