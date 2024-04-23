@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Request, HTTPException
-from service.testfunc import addition
 from service import backendAI, openaiMethod,jsonopenaiMethod
 from fastapi.responses import JSONResponse
 
@@ -24,11 +23,6 @@ async def read_item(request: Request):
     #function here! 
     #answer = result from query
     return { "answer": "placeholder" }
-
-@router.get("/test/")
-async def test(input_int1: int, input_int2: int):
-    result =addition(input_int1, input_int2)
-    return {"result": result}   
 
 @router.post("/openairoutes/")
 async def read_item(request: Request):
