@@ -23,7 +23,7 @@ db = SQLDatabase.from_uri(db_uri)
 # Open the schema file til variable db_schema
 #db_schema = open("schema_db.txt", "r")
 
-print("db_schema___:")
+print("Initializing the llm model...")
 
 # Initialize the OpenAI language model
 llm = ChatOpenAI(model="gpt-4-1106-preview", temperature=0.0, api_key = api_key)
@@ -91,9 +91,9 @@ sql_chain = (
     | StrOutputParser()
 )
 
-print("db_schema4:")
-
 #print(sql_chain.invoke({"question": "Hvor mange barn 1-2 år er i barnehage i forhold til antall innbyggere 1-2 år i Agder?"}))
+
+print("Input the validated question to the SQL database...")
 
 # Function to validate and run the query
 def validate_and_run_query(query):
