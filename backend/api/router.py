@@ -1,9 +1,20 @@
-from fastapi import APIRouter, Request, HTTPException
 from service import backendAI, openaiMethod,jsonopenaiMethod
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import JSONResponse
+from service import handle_user_query  
 
 
 router = APIRouter()
+
+@router.post("/query/")
+async def query(prompt: str):
+    try:
+        # Kaller handle_user_query-funksjonen fra query_handler med brukerens prompt
+        answer = handle_user_query(prompt)
+        return JSONResponse(content={"answer": answer}, status_code=200)
+    except Exception as e:
+        # FastAPI vil fange og håndtere generelle unntak
+        return JSONResponse(content={"error": str(e)}, status_code=500)
 
 
 @router.get("/")

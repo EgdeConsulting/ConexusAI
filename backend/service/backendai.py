@@ -2,6 +2,8 @@
 import openai, os
 from fastapi.encoders import jsonable_encoder as jsonfy
 from fastapi import HTTPException
+
+
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # Example of a simple function that could represent some functionality of backendAI
 def backendAI(input_data):
