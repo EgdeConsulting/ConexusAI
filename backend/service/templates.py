@@ -14,9 +14,25 @@ INNER JOIN dim_indikator ON fact_tables.dim_indikator_key = dim_indikator.dim_in
 WHERE dim_region.kommunenavn LIKE '%Oslo%'
 AND dim_indikator.maaleenhet LIKE '%antall%'
 AND dim_indikator.eierbeskrivelse LIKE '%antall%barnehagen%'
-
+det finnes ikke dim_indikator.indikatornavn men finnes noe som dim_indikator.navn
+hvis du finner ikke nok informasjon, kan du prøve å endre spørringen eller spørre om mer informasjon du kan bruke for eksempel dim_indikator.eierbeskrivelse istedenfor dim_indikator.navn.
+når du sender query ikke sende med syntaxen feil foreksempel syntax near '`', ikke sende ```sql ```] med query 
 Question: {question}
+
 SQL Query:
+
+SELECT *
+FROM [dbo].[fact_tables]
+INNER JOIN dim_region ON fact_tables.dim_region_key = dim_region.dim_region_key
+INNER JOIN dim_indikator ON fact_tables.dim_indikator_key = dim_indikator.dim_indikator_key
+WHERE dim_region.kommunenavn LIKE '%Oslo%'
+AND dim_indikator.maaleenhet LIKE '%antall%'
+AND dim_indikator.eierbeskrivelse LIKE '%antall%barnehagen%'
+det finnes ikke dim_indikator.indikatornavn men finnes noe som dim_indikator.navn
+hvis du finner ikke nok informasjon, kan du prøve å endre spørringen eller spørre om mer informasjon du kan bruke for eksempel dim_indikator.eierbeskrivelse istedenfor dim_indikator.navn.
+når du sender query ikke sende med syntaxen feil foreksempel syntax near '`', ikke sende ```sql
+
+```] med query 
 """
 
 reply_template = """

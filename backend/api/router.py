@@ -1,20 +1,29 @@
-from service import backendAI, openaiMethod,jsonopenaiMethod
+from service import backendAI, openaiMethod,jsonopenaiMethod, handle_user_query, Config, DatabaseWrapper
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import JSONResponse
-from service import handle_user_query  
+from pydantic import BaseModel
+from typing import Optional
 
+class QueryResponse(BaseModel):
+    sql_query: str
+    answer: str
+    error: str
 
 router = APIRouter()
+class Query(BaseModel):
+    prompt: str
 
-@router.post("/query/")
-async def query(prompt: str):
+
+@router.post("/queryDBAI/", response_model=QueryResponse)
+async def queryAI(query: Query):
     try:
-        # Kaller handle_user_query-funksjonen fra query_handler med brukerens prompt
-        answer = handle_user_query(prompt)
-        return JSONResponse(content={"answer": answer}, status_code=200)
+        result = handle_user_query(query.prompt)
+        if result["error"]:
+            raise HTTPException(status_code=404, detail=result["error"])
+        return result
     except Exception as e:
         # FastAPI vil fange og håndtere generelle unntak
-        return JSONResponse(content={"error": str(e)}, status_code=500)
+        return {"sql_query": "", "answer": "", "error": str(e)}
 
 
 @router.get("/")

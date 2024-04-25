@@ -1,6 +1,6 @@
-from database_manager import DatabaseWrapper
-from templates import query_template, reply_template
-from config import Config
+from .database_manager import DatabaseWrapper
+from .templates import query_template, reply_template
+from .config import Config
 from langchain_community.utilities import SQLDatabase
 from langchain_openai import ChatOpenAI
 from langchain_community.tools.sql_database.tool import QuerySQLCheckerTool
@@ -26,7 +26,7 @@ def sql_chain(question, schema):
 
 def validate_and_run_query(query):
     """Validerer og kjører SQL spørring mot databasen."""
-    print("QUERY validate_and_run_query method called")
+    print("QUERY validate_and_run_query method called", {query})
     checked_query = sql_checker.run(query)
     try:
         result = db.run_query(checked_query)
@@ -36,18 +36,16 @@ def validate_and_run_query(query):
         return None
 
 def handle_user_query(question):
-    """Håndterer brukerens spørsmål og returnerer svaret ved å bruke full_chain."""
     print(" QUERY handle_user_query method called")    
     schema = get_schema()  # Henter skjemainformasjon
-    query = sql_chain(question, schema)
+    query = sql_chain(question, schema)  # Generer SQL-spørring
     result = validate_and_run_query(query)
     if result:
+        # Anta at result er en tuple eller en struktur som kan inneholde både 'result' og 'query'
         response = reply_template.format(schema=schema, question=question, query=query, response=result)
-        return response
+        return {"sql_query": query, "answer": response}
     else:
-        return "Ingen data funnet eller en feil oppstod."
+        return {"sql_query": query, "answer": "Ingen data funnet eller en feil oppstod.", "error": "Data ikke funnet"}
 
-# Eksempel på kjøring
-if __name__ == "__main__":
-    question = "Hva er antall barnehager i Oslo?"
-    print(handle_user_query(question))
+
+

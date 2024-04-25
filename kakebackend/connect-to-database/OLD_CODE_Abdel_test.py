@@ -11,7 +11,22 @@ import pyodbc
  
 # Load the environment variables
 load_dotenv()
- 
+'''SELECT *
+  FROM [dbo].[dim_region] where kommunenavn LIKE '%Oslo%'
+
+  SELECT *
+  FROM [dbo].[dim_indikator] 
+  where eierbeskrivelse LIKE '%antall%barnehagen%'
+  AND maaleenhet LIKE '%antall%';
+
+SELECT *
+FROM [dbo].[fact_tables]
+INNER JOIN dim_region ON fact_tables.dim_region_key = dim_region.dim_region_key
+INNER JOIN dim_indikator ON fact_tables.dim_indikator_key = dim_indikator.dim_indikator_key
+WHERE dim_region.kommunenavn LIKE '%Oslo%'
+AND dim_indikator.maaleenhet LIKE '%antall%'
+AND dim_indikator.eierbeskrivelse LIKE '%antall%barnehagen%'
+'''
 print("Establishing a connection to Azure SQL Database...")
  
 # Establish a connection to the Azure SQL Database
