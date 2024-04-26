@@ -2,9 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import JSONResponse
 from test_old_version_new_query_final_a_only import get_input_from_frontend
 
-
 router = APIRouter()
-
 
 @router.get("/")
 async def read_root():
@@ -18,4 +16,3 @@ async def read_item(request: Request):
     query = data.get("prompt")
     answer = get_input_from_frontend(query)
     return { "output": answer}
-
