@@ -77,7 +77,7 @@ SELECT [navn], [maaleenhet], [human_readable_table_name], [eier], [eierbeskrivel
 
         """
         ),
-        ("user", "{question}\ ai: ")
+        ("user", "{question}\\ ai: ")
     ]
 )
 
