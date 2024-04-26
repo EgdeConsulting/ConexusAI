@@ -36,12 +36,11 @@ async def read_item(request: Request):
     except HTTPException as e:
         # FastAPI vil fange og håndtere HTTPException
         return JSONResponse(content={"error": e.detail}, status_code=e.status_code)
-
+"""
 @router.post("/openairoutesss/")
 async def read_item(request: Request):
     data = await request.json()
-    USER_INPUT = data.get("prompt")
-    answer = jsonopenaiMethod(USER_INPUT)
-    #function here! 
+    query = data.get("prompt")
+    answer = get_input_from_frontend(query)
     #answer = result from query
-    return { "answer": answer }
+    return { "answer": answer }"""
