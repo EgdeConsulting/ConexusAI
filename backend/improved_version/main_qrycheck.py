@@ -63,6 +63,20 @@ Når du håndterer NULL-verdier, bruk alltid IS NULL eller IS NOT NULL for å n�
 IKKE utfør noen DML-uttalelser (INSERT, UPDATE, DELETE, DROP osv.) til databasen.
 Hvis spørsmålet ikke virker relatert til databasen, returner "Jeg vet ikke" som svaret.
 
+Først må du skriven en spørring opp mot tabellen dim_indikator, for å finne dim_indikator_key for en indikator som er relevant for spørsmålet.
+Deretter må du skrive en spørring som henter data fra fact_tables viewet basert på dim_indikator_key og dim_region_key.
+Du må bruke keyword variabelen i spørringen for å søke etter informasjon i tabellen dim_indikator.
+Keyword er det viktigste ordet i setningen brukeren sender inn som spørsmål.
+
+Eksempel på query som henter dim_indikator_key:
+SELECT [navn], [maaleenhet], [human_readable_table_name], [eier], [eierbeskrivelse], [eierSistEndret], [fraDato], [tilDato], [fagomraade], [dim_indikator_key], [eierbeskrivelseURL], [aktiv]
+            FROM [dbo].[dim_indikator]
+            WHERE navn LIKE :keyword
+               OR eierbeskrivelse LIKE :keyword
+               OR human_readable_table_name LIKE :keyword
+               OR fagomraade LIKE :keyword
+
+
 Eksempel på en query:
 SELECT *
 FROM fact_grunnskole_nokkeltall
@@ -70,13 +84,7 @@ JOIN dim_region ON fact_grunnskole_nokkeltall.dim_region_key = dim_region.dim_re
 WHERE dim_region.kommunenavn = 'Oslo'
 AND fact_grunnskole_nokkeltall.år = '2023-24'
 
-returnerer dette:
-dim_region_key	dim_indikator_key	eierform	verdi	Kjønn	Prøve	år	id	Årstrinn	fullføringsgrad	alder	funksjon	ForeldrenesUtdanningsnivaa	kommunenummer	kommunenavn	fylkesnummer	fylkesnavn	omraadeid	omraadenavn	type	fraDato	tilDato	dim_region_key	bydelsnummer	bydelsnavn	kostragruppe	strukturendring_sammenslaaing	strukturendring_loesrivelse
-2396	144	Privat eiet	20.1	Alle kjønn	Engelsk	2023-24	20657	5. årstrinn	NULL	NULL	NULL	NULL	301	Oslo	NULL	NULL	NULL	NULL	Kommune	01/01/1900	31/12/2099	2396	NULL	NULL	1702	NULL	NULL
-2396	144	Privat eiet	25.7	Alle kjønn	Regning	2023-24	30105	5. årstrinn	NULL	NULL	NULL	NULL	301	Oslo	NULL	NULL	NULL	NULL	Kommune	01/01/1900	31/12/2099	2396	NULL	NULL	1702	NULL	NULL
-2396	144	Privat eiet	19.1	Jente	Lesing	2023-24	3327	5. årstrinn	NULL	NULL	NULL	NULL	301	Oslo	NULL	NULL	NULL	NULL	Kommune	01/01/1900	31/12/2099	2396	NULL	NULL	1702	NULL	NULL
-2396	666	Privat eiet	3	Gutt	Regning	2023-24	12462	9. årstrinn	NULL	NULL	NULL	NULL	301	Oslo	NULL	NULL	NULL	NULL	Kommune	01/01/1900	31/12/2099	2396	NULL	NULL	1702	NULL	NULL
-2396	144	Offentlig skole	18.6	Alle kjønn	Lesing	2023-24	54263	5. årstrinn	NULL	NULL	NULL	NULL	301	Oslo	NULL	NULL	NULL	NULL	Kommune	01/01/1900	31/12/2099	2396	NULL	NULL	1702	NULL	NULL
+
 
 Schema for databasen er gitt nedenfor:
 {schema}
