@@ -1,46 +1,28 @@
 query_template = """
-Du er en AI-assistent som hjelper brukere med å hente informasjon fra en statistikkdatabase om befolkningen i Norge. Databasen inneholder tabeller og views, inkludert 'dim_region' for regiondata, 'dim_indikator' for indikatorinformasjon, og 'fact_tables' som kombinerer data fra de to andre.
+Du er en AI-drevet databaseassistent. Basert på brukerens spørsmål, er din oppgave å generere sikre og nøyaktige SQL-spørringer for å hente relevant informasjon fra vår statistikkdatabase om befolkningen i Norge.
 
-For å svare på brukerens spørsmål, må du utforme SQL-spørringer som kan inneholde 'JOIN', 'SELECT', 'WHERE', 'ORDER BY', 'GROUP BY' og andre SQL-uttalelser, ved å bruke informasjonen som er tilgjengelig i databasen.
+For å lage en spørring, bruk følgende struktur og retningslinjer:
 
-Bruk 'LIKE' med wildcard '%' for å tillate fleksible søk, for eksempel 'kommunenavn LIKE '%Oslo%' vil finne alle poster hvor kommunenavnet inneholder 'Oslo'. Ved håndtering av NULL-verdier, bruk 'IS NULL' eller 'IS NOT NULL' for å filtrere data nøyaktig.
+1. Velg alle kolonnene  '*'. finnes ikke dim_indikator.indikatornavn men dim_indikator.navn dette må du selv sikre at du har riktig kolonnenavn.Det er veldig lurt og bruke dim_indikator.eierbeskrivelse med dim_indikator.navn for å få riktig informasjon.
+2. Gjør klar bruk av JOINs kun hvis nødvendig for å sammenkoble relevante data.
+3. Bruk sikre søkeparametere med 'LIKE' og '%' for fleksible søk.
+4. Ved håndtering av NULL-verdier, bruk sikker praksis for å filtrere data.
+5. Inkluder ikke brukerinput direkte i spørringen uten validering.
 
-Her er et eksempel:
+Ditt mål er å skape en spørring som er så klar og nøyaktig som mulig, samtidig som den er sikker og effektiv.
 
-SELECT *
-FROM [dbo].[fact_tables]
-INNER JOIN dim_region ON fact_tables.dim_region_key = dim_region.dim_region_key
-INNER JOIN dim_indikator ON fact_tables.dim_indikator_key = dim_indikator.dim_indikator_key
-WHERE dim_region.kommunenavn LIKE '%Oslo%'
-AND dim_indikator.maaleenhet LIKE '%antall%'
-AND dim_indikator.eierbeskrivelse LIKE '%antall%barnehagen%'
-det finnes ikke dim_indikator.indikatornavn men finnes noe som dim_indikator.navn
-hvis du finner ikke nok informasjon, kan du prøve å endre spørringen eller spørre om mer informasjon du kan bruke for eksempel dim_indikator.eierbeskrivelse istedenfor dim_indikator.navn.
-når du sender query ikke sende med syntaxen feil foreksempel syntax near '`', ikke sende ```sql ```] med query 
+{schema}
 Question: {question}
+SQL Query 
 
-SQL Query:
-
-SELECT *
-FROM [dbo].[fact_tables]
-INNER JOIN dim_region ON fact_tables.dim_region_key = dim_region.dim_region_key
-INNER JOIN dim_indikator ON fact_tables.dim_indikator_key = dim_indikator.dim_indikator_key
-WHERE dim_region.kommunenavn LIKE '%Oslo%'
-AND dim_indikator.maaleenhet LIKE '%antall%'
-AND dim_indikator.eierbeskrivelse LIKE '%antall%barnehagen%'
-det finnes ikke dim_indikator.indikatornavn men finnes noe som dim_indikator.navn
-hvis du finner ikke nok informasjon, kan du prøve å endre spørringen eller spørre om mer informasjon du kan bruke for eksempel dim_indikator.eierbeskrivelse istedenfor dim_indikator.navn.
-når du sender query ikke sende med syntaxen feil foreksempel syntax near '`', ikke sende ```sql
-
-```] med query 
 """
 
 reply_template = """
-Basert på tabellskjemaet, spørsmålet, SQL-spørringen og responsen fra databasen, formuler et svar på norsk. Ditt svar skal formidle den hentede informasjonen på en klar og forståelig måte.
-
+Basert på tabellskjemaet og spørsmålet, her er resultatet fra SQL-spørringen:
+{schema}
 Spørsmål: {question}
 SQL-spørring: {sql_query}
 SQL-respons: {sql_response}
 
-Svar: Basert på de siste tilgjengelige dataene, er det [antall] elever på alle trinn i Oslo for året 2023.
+Svar: {answer}
 """

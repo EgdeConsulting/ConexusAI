@@ -18,12 +18,14 @@ class Query(BaseModel):
 async def queryAI(query: Query):
     try:
         result = handle_user_query(query.prompt)
-        if result["error"]:
+        # Sjekk om 'error' nøkkel eksisterer og ikke er en tom streng
+        if result.get("error"):  
             raise HTTPException(status_code=404, detail=result["error"])
         return result
     except Exception as e:
-        # FastAPI vil fange og håndtere generelle unntak
-        return {"sql_query": "", "answer": "", "error": str(e)}
+        # Returner en mer informativ feilmelding
+        return {"sql_query": "", "answer": "", "error": f"Serverfeil: {str(e)}"}
+
 
 
 @router.get("/")
