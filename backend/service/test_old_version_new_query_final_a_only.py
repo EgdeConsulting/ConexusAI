@@ -86,4 +86,7 @@ agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT
 #user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder i år 2020?" # answer = 81%
 user_query = "Hvor mange elever er det på alle trinn i Oslo i år 2023?"  # Answer = 222 946
 
-agent_executor.invoke(prompt.format_prompt(question = user_query))
+#agent_executor.invoke(prompt.format_prompt(question = user_query))
+
+def get_input_from_frontend(query):
+    return agent_executor.invoke(prompt.format_prompt(question = query))
