@@ -17,7 +17,7 @@ load_dotenv()
 # Establish a connection to the Azure SQL Database
 print("Connecting to the database...")
 conn_string = 'mssql+pyodbc:///?odbc_connect=' + connection_string
-print(conn_string)
+
 print("Creating engine...")
 db_engine = create_engine(conn_string)
 print("Creating SQLDatabase object...")
