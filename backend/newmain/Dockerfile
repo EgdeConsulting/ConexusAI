@@ -16,7 +16,7 @@ EXPOSE 80
 
 # Define environment variable
 
-WORKDIR /newmain/app
+WORKDIR /newmain
 
 # Run main.py when the container launches
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", port="80"]
