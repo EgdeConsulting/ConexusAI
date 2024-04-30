@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from api.router import router
-
+import sys
+# import os
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 app = FastAPI()
 

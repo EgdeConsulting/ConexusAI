@@ -15,14 +15,19 @@ from streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 load_dotenv()
 
 # Establish a connection to the Azure SQL Database
+print("Connecting to the database...")
 conn_string = 'mssql+pyodbc:///?odbc_connect=' + connection_string
-print(conn_string)
+
+print("Creating engine...")
 db_engine = create_engine(conn_string)
+print("Creating SQLDatabase object...")
 db = SQLDatabase(db_engine)
 
 # Establish a connection to the Azure SQL Database
+print("Creating llm object...")
 llm = ChatOpenAI(model="gpt-4-1106-preview", temperature=0.0, api_key = os.getenv("OPENAI_API_KEY"), callbacks=[FinalStreamingStdOutCallbackHandler()])
 
+print("Creating SQLDatabaseToolkit object...")
 sql_toolkit = SQLDatabaseToolkit(db=db, llm=llm)
 sql_toolkit.get_tools()
 
@@ -73,9 +78,11 @@ SELECT [navn], [maaleenhet], [human_readable_table_name], [eier], [eierbeskrivel
 
         """
         ),
-        ("user", "{question}\ ai: ")
+        ("user", "{question}\\ ai: ")
     ]
 )
+
+print("Creating agent executor...")
 agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False, max_execution_time=300, max_iterations=100)
 
 
@@ -84,9 +91,11 @@ agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT
 #user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder?" #svar = 82.5%
 #user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder i år 2023?" #år 2023 er bait, er ikke med i datasettet
 #user_query = "Hvor mange barn 1-2 år er i barnehage i forhold til innbyggere 1-2 år i Agder i år 2020?" # answer = 81%
-user_query = "Hvor mange elever er det på alle trinn i Oslo i år 2023?"  # Answer = 222 946
+#user_query = "Hvor mange elever er det på alle trinn i Oslo i år 2023?"  # Answer = 222 946
 
+#print("Invoking agent executor...")
 #agent_executor.invoke(prompt.format_prompt(question = user_query))
 
+print("Executing get_input_from_frontend function...")
 def get_input_from_frontend(query):
     return agent_executor.invoke(prompt.format_prompt(question = query))
