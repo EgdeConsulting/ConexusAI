@@ -24,9 +24,14 @@ db_engine = create_engine(conn_string)
 print("Creating SQLDatabase object...")
 db = SQLDatabase(db_engine)
 
+model = "gpt-4-1106-preview"
+temperature = 0.0
+api_key = os.getenv("OPENAI_API_KEY")
+callback_handler = FinalStreamingStdOutCallbackHandler()
+
 # Establish a connection to the Azure SQL Database
 print("Creating llm object...")
-llm = ChatOpenAI(model="gpt-4-1106-preview", temperature=0.0, api_key = os.getenv("OPENAI_API_KEY"), callbacks=[FinalStreamingStdOutCallbackHandler()])
+llm = ChatOpenAI(model=model, temperature=temperature, api_key = api_key, callbacks=callback_handler)
 
 # Create the SQLDatabaseToolkit object
 print("Creating SQLDatabaseToolkit object...")
