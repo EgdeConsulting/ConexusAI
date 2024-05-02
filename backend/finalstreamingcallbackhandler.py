@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Optional
 from langchain_core.callbacks import StreamingStdOutCallbackHandler
 
 DEFAULT_ANSWER_PREFIX_TOKENS = ["Final", "Answer", ":"]
+ERROR_PREFIX_TOKENS = ["Final", "Answer"]
 
 
 class FinalStreamingStdOutCallbackHandler(StreamingStdOutCallbackHandler):
@@ -46,6 +47,8 @@ class FinalStreamingStdOutCallbackHandler(StreamingStdOutCallbackHandler):
         """
         super().__init__()
         if answer_prefix_tokens is None:
+            self.answer_prefix_tokens = DEFAULT_ANSWER_PREFIX_TOKENS
+        elif answer_prefix_tokens is ERROR_PREFIX_TOKENS:
             self.answer_prefix_tokens = DEFAULT_ANSWER_PREFIX_TOKENS
         else:
             self.answer_prefix_tokens = answer_prefix_tokens

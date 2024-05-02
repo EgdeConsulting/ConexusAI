@@ -33,6 +33,7 @@ print("Creating SQLDatabaseToolkit object...")
 sql_toolkit = SQLDatabaseToolkit(db=db, llm=llm)
 sql_toolkit.get_tools()
 
+# Create the prompt template
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system",
@@ -82,9 +83,11 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
+# Create the agent executor
 print("Creating agent executor...")
 agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False, max_execution_time=300, max_iterations=15)
 
+# Function to get input from the frontend
 print("Executing get_input_from_frontend function...")
 def get_input_from_frontend(query):
-    return agent_executor.invoke(prompt.format_prompt(question = query))
+    return agent_executor.invoke(prompt.format_prompt(question = query))  # Invoke the agent executor with the user's query
