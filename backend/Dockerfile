@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11.8
+FROM python:3.12-slim
 
 # Install ODBC Driver 18 for SQL Server
 RUN apt-get update \
@@ -13,10 +13,10 @@ RUN apt-get update \
 WORKDIR /backend
 
 # Copy the current directory contents into the container at /newmain
-COPY . . 
+COPY ./backend /backend 
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
