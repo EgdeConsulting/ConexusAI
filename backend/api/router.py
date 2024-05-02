@@ -33,9 +33,13 @@ async def read_item(request: Request):
     
 @router.post("/message/")
 async def read_item(request: Request):
-    data = await request.json()
-    USER_INPUT = data.get("prompt")
-    answer = get_input_from_frontend(USER_INPUT)
-    
-    return { "answer": answer }
+    try:
+        data = await request.json()
+        USER_INPUT = data.get("prompt")
+        answer = get_input_from_frontend(USER_INPUT)
+        final_answer = answer.output
+        return { "answer": final_answer }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+  
     

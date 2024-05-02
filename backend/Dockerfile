@@ -10,7 +10,7 @@ RUN apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql18
 
 # Set the working directory in the container
-WORKDIR /main
+WORKDIR /backend
 
 # Copy the current directory contents into the container at /newmain
 COPY . . 
