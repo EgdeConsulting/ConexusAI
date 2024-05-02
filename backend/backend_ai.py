@@ -31,7 +31,7 @@ callback_handler = FinalStreamingStdOutCallbackHandler()
 
 # Establish a connection to the Azure SQL Database
 print("Creating llm object...")
-llm = ChatOpenAI(model=model, temperature=temperature, api_key = api_key, callbacks=callback_handler)
+llm = ChatOpenAI(model=model, temperature=temperature, api_key = api_key, callbacks=[callback_handler])
 
 # Create the SQLDatabaseToolkit object
 print("Creating SQLDatabaseToolkit object...")

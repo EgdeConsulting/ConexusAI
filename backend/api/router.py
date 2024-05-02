@@ -37,5 +37,5 @@ async def read_item(request: Request):
     USER_INPUT = data.get("prompt")
     answer = get_input_from_frontend(USER_INPUT)
     
-    return { "output": answer }
+    return { "answer": answer }
     
