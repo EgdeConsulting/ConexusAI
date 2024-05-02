@@ -70,7 +70,7 @@ class FinalStreamingStdOutCallbackHandler(StreamingStdOutCallbackHandler):
         """Run when LLM starts running."""
         self.answer_reached = False
 
-    """def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
+    def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
         # Run on new LLM token. Only available when streaming is enabled.
     
         # Remember the last n tokens, where n = len(answer_prefix_tokens)
@@ -86,26 +86,6 @@ class FinalStreamingStdOutCallbackHandler(StreamingStdOutCallbackHandler):
             return
 
         # ... if yes, then print tokens from now on
-        if self.answer_reached:
-            sys.stdout.write(token)
-            sys.stdout.flush()"""
-    
-    def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
-        """Run on new LLM token. Only available when streaming is enabled."""
-
-    # Remember the last n tokens, where n = len(answer_prefix_tokens)
-        self.append_to_last_tokens(token)
-
-    # Check if the last n tokens match the answer_prefix_tokens list ...
-        if self.check_if_answer_reached() and not self.answer_reached:
-            self.answer_reached = True
-            if self.stream_prefix:
-                for t in self.last_tokens:
-                    sys.stdout.write(t)
-                sys.stdout.flush()
-        # Do not return here to allow streaming of subsequent tokens
-
-    # ... if yes, then print tokens from now on
         if self.answer_reached:
             sys.stdout.write(token)
             sys.stdout.flush()

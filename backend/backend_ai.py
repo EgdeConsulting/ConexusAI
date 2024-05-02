@@ -1,4 +1,4 @@
-import pyodbc
+import pyodbc  # Import the pyodbc module which is used to create connection string
 import os
 from app import connection_string
 from langchain_community.agent_toolkits import create_sql_agent
@@ -24,19 +24,25 @@ db_engine = create_engine(conn_string)
 print("Creating SQLDatabase object...")
 db = SQLDatabase(db_engine)
 
+# LLM parameters
 model = "gpt-4-1106-preview"
 temperature = 0.0
 api_key = os.getenv("OPENAI_API_KEY")
-callback_handler = FinalStreamingStdOutCallbackHandler()
 
-# Establish a connection to the Azure SQL Database
-print("Creating llm object...")
-llm = ChatOpenAI(model=model, temperature=temperature, api_key = api_key, callbacks=[callback_handler], verbose=False)
+# Initialize the LLM and SQLDatabaseToolkit objects
+def initialize():
+    callback_handler = FinalStreamingStdOutCallbackHandler()  # Create the callback handler every time the function is called
 
-# Create the SQLDatabaseToolkit object
-print("Creating SQLDatabaseToolkit object...")
-sql_toolkit = SQLDatabaseToolkit(db=db, llm=llm)
-sql_toolkit.get_tools()
+    # Establish a connection to the Azure SQL Database
+    #print("Creating llm object...")
+    llm = ChatOpenAI(model=model, temperature=temperature, api_key=api_key, callbacks=[callback_handler])
+
+    # Create the SQLDatabaseToolkit object
+    #print("Creating SQLDatabaseToolkit object...")
+    sql_toolkit = SQLDatabaseToolkit(db=db, llm=llm)
+    sql_toolkit.get_tools()
+
+    return llm
 
 # Create the prompt template
 prompt = ChatPromptTemplate.from_messages(
@@ -88,11 +94,9 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-# Create the agent executor
-print("Creating agent executor...")
-agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False, max_execution_time=300, max_iterations=15, callback_handler=[callback_handler])
-
 # Function to get input from the frontend
-print("Executing get_input_from_frontend function...")
 def get_input_from_frontend(query):
+    llm = initialize()
+    agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False, max_execution_time=300, max_iterations=20)
+    print("Invoking agent executor...")
     return agent_executor.invoke(prompt.format_prompt(question = query))  # Invoke the agent executor with the user's query
