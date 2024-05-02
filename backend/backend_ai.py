@@ -1,4 +1,4 @@
-#import pyodbc  # Import the pyodbc module which is used to create connection string
+import pyodbc  # Import the pyodbc module which is used to create connection string
 import os
 from app import connection_string
 from langchain_community.agent_toolkits import create_sql_agent
