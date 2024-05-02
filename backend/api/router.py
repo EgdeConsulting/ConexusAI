@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import JSONResponse
-from test_old_version_new_query_final_a_only import get_input_from_frontend
+from backend_ai import get_input_from_frontend
 from openAI_method import openaiMethod
 from test_old_version_new_query_final_a_only import get_input_from_frontend
 router = APIRouter()
