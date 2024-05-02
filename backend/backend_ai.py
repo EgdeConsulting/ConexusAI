@@ -90,7 +90,7 @@ prompt = ChatPromptTemplate.from_messages(
 
 # Create the agent executor
 print("Creating agent executor...")
-agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False, max_execution_time=300, max_iterations=15, callback_handler=callback_handler)
+agent_executor = create_sql_agent(llm=llm, db=db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False, max_execution_time=300, max_iterations=15, callback_handler=[callback_handler])
 
 # Function to get input from the frontend
 print("Executing get_input_from_frontend function...")
