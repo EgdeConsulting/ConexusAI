@@ -11,12 +11,12 @@ async def read_root():
     docs_url = "/docs'>"
     return {"message": message}
 
-@router.post("/message/")
-async def read_item(request: Request):
-    data = await request.json()
-    query = data.get("prompt")
-    answer = get_input_from_frontend(query)
-    return { "output": answer}
+# @router.post("/message/")
+# async def read_item(request: Request):
+#     data = await request.json()
+#     query = data.get("prompt")
+#     answer = get_input_from_frontend(query)
+#     return { "output": answer}
 
 @router.post("/openairoutes/")
 async def read_item(request: Request):
