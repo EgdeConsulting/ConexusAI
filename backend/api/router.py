@@ -37,8 +37,9 @@ async def read_item(request: Request):
         data = await request.json()
         USER_INPUT = data.get("prompt")
         answer = get_input_from_frontend(USER_INPUT)
-        final_answer = answer.output
-        return { "answer": final_answer }
+        #final_answer = answer.output
+        final_answer = answer.get("output") if answer.get("output") else "no answer found"
+        return {"answer": final_answer}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
   
