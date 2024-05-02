@@ -29,3 +29,5 @@ async def read_item(request: Request):
     except HTTPException as e:
         # FastAPI vil fange og håndtere HTTPException
         return JSONResponse(content={"error": e.detail}, status_code=e.status_code)
+    
+# update
