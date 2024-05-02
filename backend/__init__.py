@@ -1,3 +1,3 @@
 from test_old_version_new_query_final_a_only import *
 from app import *
-from streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
+from finalstreamingcallbackhandler import FinalStreamingStdOutCallbackHandler
