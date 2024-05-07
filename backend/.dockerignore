@@ -1,0 +1,13 @@
+.git
+.gitignore*.pyc
+*.pyo
+*.pyd__pycache__.pytest_cache/
+.env
+.venv
+.eggs
+eggs parts bin var sdist develop-eggs 
+.installed.cfg 
+.cache
+*.egg-info/ 
+.installed.cfg
+*.egg
