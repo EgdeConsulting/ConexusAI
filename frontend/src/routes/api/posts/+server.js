@@ -15,7 +15,7 @@ export const POST = async ({ request }) => {
 
     // Gjør en POST-forespørsel til det eksterne API-et med prompten
     const apiResponse = await fetch(
-      "http://127.0.0.1:8000/message/",
+      "https://restapipython.azurewebsites.net/query",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
